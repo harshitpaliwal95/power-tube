@@ -13,6 +13,9 @@ i {
 input {
   color: var(--white);
 }
+.search-navbar input {
+  width: 14rem;
+}
 
 @media only screen and (max-width: 600px) {
   .nav-center {

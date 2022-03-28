@@ -45,9 +45,7 @@ const Navbar = () => {
           <div className="right-nav">
             <div>
               <button className="btn-icon">
-                <Link to="/wishlist">
-                  <i className="bi bi-person-fill"></i>
-                </Link>
+                <i className="bi bi-person-fill"></i>
               </button>
 
               <button className="btn-icon burger">
