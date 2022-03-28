@@ -1,8 +1,15 @@
 import "./App.css";
-
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
-
+import {
+  Explore,
+  Home,
+  LikedVideo,
+  Login,
+  Playlist,
+  SignUp,
+  WatchLater,
+} from "./pages";
 function App() {
   return (
     <div className="App">
