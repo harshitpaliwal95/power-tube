@@ -1,5 +1,6 @@
 import React from "react";
-import { Navbar } from "../../components";
+import { Navbar, Sidebar, Card } from "../../components";
+
 import "./home.css";
 
 export const Home = () => {
@@ -7,16 +8,14 @@ export const Home = () => {
     <div>
       <Navbar />
       <section className="main-box">
-        {/* <Filter /> */}
+        <Sidebar />
         <main className="main-product">
           <div className="grid-three">
-            {/* {newFilterData.map((product) => (
-              <ProductCard product={product} key={product._id} />
-            ))} */}
-            <div>
-              helo asdfadfadsf asdfadfadsfdfasd fadsf asdfasfasdafgafgerg
-              agarrgadf adsf adf asd
-            </div>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
           </div>
         </main>
       </section>
