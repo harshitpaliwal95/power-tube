@@ -1,0 +1,9 @@
+.sidebar-btn {
+  margin: 2rem 0;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .side-bar {
+    display: none;
+  }
+}

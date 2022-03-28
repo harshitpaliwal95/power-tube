@@ -1,9 +1,6 @@
-import React from "react";
 import { Navbar, Sidebar, Card } from "../../components";
 
-import "./home.css";
-
-export const Home = () => {
+export const Explore = () => {
   return (
     <div>
       <Navbar />
@@ -11,9 +8,6 @@ export const Home = () => {
         <Sidebar />
         <main className="main-product">
           <div className="grid-three">
-            <Card />
-            <Card />
-            <Card />
             <Card />
             <Card />
           </div>

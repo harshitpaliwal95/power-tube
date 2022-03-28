@@ -1,0 +1,36 @@
+.main-box {
+  margin: 8rem 2rem 1rem 2rem;
+  display: flex;
+}
+.check-list-item {
+  padding: 0.5rem 2rem;
+}
+.check-list-item:hover {
+  opacity: 0.6;
+  color: inherit;
+}
+.grid-three {
+  gap: 5rem;
+}
+.main-product {
+  margin: auto;
+}
+.img-height {
+  height: 18rem;
+}
+@media only screen and (max-width: 600px) {
+  .main-box {
+    margin: 6.5rem 0rem;
+  }
+  .grid-three {
+    gap: 1rem 0.4rem;
+  }
+  .side-bar {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .grid-three {
+    grid-template-columns: 1fr 1fr;
+  }
+}

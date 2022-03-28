@@ -1,9 +1,7 @@
-import React from "react";
-import { Navbar, Sidebar, Card } from "../../components";
+import { Navbar, Sidebar } from "../../components";
+import { NewPlatlist } from "./components/newPlatlist";
 
-import "./home.css";
-
-export const Home = () => {
+export const Playlist = () => {
   return (
     <div>
       <Navbar />
@@ -11,11 +9,7 @@ export const Home = () => {
         <Sidebar />
         <main className="main-product">
           <div className="grid-three">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <NewPlatlist />
           </div>
         </main>
       </section>

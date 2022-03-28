@@ -1,0 +1,10 @@
+.create-playlist {
+  width: 20rem;
+  height: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.create-playlist i {
+  font-size: 1.5rem;
+}
