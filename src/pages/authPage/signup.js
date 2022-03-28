@@ -24,10 +24,9 @@ export function SignUp() {
               </div>
               <div className="space-between forget-pass">
                 <span>
-                  <input type="checkbox" />
-                  <span className="text-medium">
-                    I accept all term & condition
-                  </span>
+                  <label className="text-medium">
+                    <input type="checkbox" /> I accept all term & condition
+                  </label>
                 </span>
               </div>
               <div className="form-btn">

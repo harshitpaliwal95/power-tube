@@ -20,8 +20,9 @@ export function Login() {
               </div>
               <div className="space-between forget-pass">
                 <span>
-                  <input type="checkbox" />
-                  <span className="text-medium">Remember Me</span>
+                  <label className="text-medium">
+                    <input type="checkbox" /> Remember Me
+                  </label>
                 </span>
                 <span>
                   <span className="text-medium">Forgot your password?</span>
