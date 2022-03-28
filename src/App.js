@@ -1,13 +1,5 @@
 import "./App.css";
-import {
-  Explore,
-  Home,
-  LikedVideo,
-  Login,
-  Playlist,
-  SignUp,
-  WatchLater,
-} from "./pages";
+
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 
