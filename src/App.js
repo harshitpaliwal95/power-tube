@@ -1,6 +1,6 @@
 import "./App.css";
 import { Home } from "./pages/homePage/home";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 function App() {
   return (
