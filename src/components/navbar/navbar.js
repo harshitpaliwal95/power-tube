@@ -46,7 +46,7 @@ const Navbar = () => {
             <div>
               <button className="btn-icon">
                 <Link to="/wishlist">
-                  <i class="bi bi-person-fill"></i>
+                  <i className="bi bi-person-fill"></i>
                 </Link>
               </button>
 
