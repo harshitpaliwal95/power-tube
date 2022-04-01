@@ -10,28 +10,44 @@ export function SignUp() {
           <div className="form-info">
             <p className="heading-x-lg text-center">Join-us</p>
             <div className="form-input">
-              <div className="input-box">
-                <label className="text-medium">Full name</label>
-                <input type="text" placeholder="Monkey D luffy" />
-              </div>
-              <div className="input-box">
-                <label className="text-medium">Email address</label>
-                <input type="text" placeholder="demo@yahoo.com" />
-              </div>
-              <div className="input-box">
-                <label className="text-medium">Password</label>
-                <input type="text" placeholder="*******" />
-              </div>
-              <div className="space-between forget-pass">
-                <span>
-                  <label className="text-medium">
-                    <input type="checkbox" /> I accept all term & condition
-                  </label>
-                </span>
-              </div>
-              <div className="form-btn">
-                <button className="btn btn-outline">Join Us</button>
-              </div>
+              <form>
+                <div className="input-box">
+                  <label className="text-medium">Full name</label>
+                  <input
+                    type="text"
+                    name="userName"
+                    placeholder="Monkey D luffy"
+                  />
+                </div>
+                <div className="input-box">
+                  <label className="text-medium">Email address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="demo@yahoo.com"
+                  />
+                </div>
+                <div className="input-box">
+                  <label className="text-medium">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="*******"
+                  />
+                </div>
+                <div className="space-between forget-pass">
+                  <span>
+                    <label className="text-medium">
+                      <input type="checkbox" /> I accept all term & condition
+                    </label>
+                  </span>
+                </div>
+                <div className="form-btn">
+                  <button type="submit" className="btn btn-outline">
+                    Sign Up
+                  </button>
+                </div>
+              </form>
               <div className="new-ac">
                 <Link to="/login">
                   <p className="text-center">
