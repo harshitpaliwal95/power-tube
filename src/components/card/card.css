@@ -3,4 +3,8 @@
 }
 .card-component {
   cursor: pointer;
+  justify-content: space-between;
+}
+.card-icon {
+  font-size: 1.2rem;
 }
