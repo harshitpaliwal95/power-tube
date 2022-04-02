@@ -7,10 +7,7 @@ export const Explore = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          <div className="grid-three">
-            <Card />
-            <Card />
-          </div>
+          <div className="grid-three"></div>
         </main>
       </section>
     </div>
