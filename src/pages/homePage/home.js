@@ -30,7 +30,7 @@ export const Home = () => {
         <main className="main-product">
           {loader && <div className="heading-lg">....loading</div>}
           <div className="grid-three">
-            {videos.map((video) => (
+            {videos.slice(0, 7).map((video) => (
               <Card key={video._id} video={video} />
             ))}
           </div>

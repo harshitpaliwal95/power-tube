@@ -1,12 +1,17 @@
+import { useState } from "react";
 import "./card.css";
 
 export const Card = ({ video }) => {
   const { title, anime, _id } = video;
-  const videoLink = `https://i.ytimg.com/vi/${_id}/hqdefault.jpg`;
+  const [btnFill, setBtnFil] = useState("");
   return (
     <div className="card-component">
       <div className="card-comp-img">
-        <img className="card-top-img" src={videoLink} alt="loading" />
+        <img
+          className="card-top-img"
+          src={`https://i.ytimg.com/vi/${_id}/hqdefault.jpg`}
+          alt="loading"
+        />
       </div>
       <div className="card-comp-contant">
         <p className="text-lg">{title}</p>
@@ -15,10 +20,10 @@ export const Card = ({ video }) => {
       <div className="card-btn-footer">
         <div className="card-icon-btn-right">
           <button>
-            <i className="bi bi-hand-thumbs-up-fill card-icon"></i>
+            <i className={`bi bi-hand-thumbs-up${btnFill} card-icon`}></i>
           </button>
           <button>
-            <i className="bi bi-bookmarks-fill card-icon"></i>
+            <i className={`bi bi-bookmarks${btnFill} card-icon`}></i>
           </button>
         </div>
       </div>
