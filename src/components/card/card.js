@@ -3,7 +3,7 @@ import "./card.css";
 
 export const Card = ({ video }) => {
   const { title, anime, _id } = video;
-  const [btnFill, setBtnFil] = useState("");
+
   return (
     <div className="card-component">
       <div className="card-comp-img">
@@ -20,10 +20,10 @@ export const Card = ({ video }) => {
       <div className="card-btn-footer">
         <div className="card-icon-btn-right">
           <button>
-            <i className={`bi bi-hand-thumbs-up${btnFill} card-icon`}></i>
+            <i className={`bi bi-hand-thumbs-up card-icon`}></i>
           </button>
           <button>
-            <i className={`bi bi-bookmarks${btnFill} card-icon`}></i>
+            <i className={`bi bi-bookmarks card-icon`}></i>
           </button>
         </div>
       </div>
