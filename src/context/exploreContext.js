@@ -6,6 +6,12 @@ const ExploreContext = createContext();
 const ExploreProvider = ({ children }) => {
   const [exploreState, exploreDispatch] = useReducer(exploreReducer, {
     explore: [],
+    category: {
+      onePiece: false,
+      naruto: false,
+      demonSlayer: false,
+      jujutsuKaisen: false,
+    },
   });
 
   return (

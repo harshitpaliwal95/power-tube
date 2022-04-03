@@ -21,7 +21,6 @@ export const Home = () => {
     })();
   }, []);
 
-  console.log(...videos);
   return (
     <div>
       <Navbar />

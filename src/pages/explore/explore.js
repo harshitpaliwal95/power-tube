@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { Navbar, Sidebar, Card } from "../../components";
 import "./explore.css";
 import axios from "axios";
+import { useExplore } from "../../context/exploreContext";
+import { setCategory } from "../../utils/setCategory";
 
 export const Explore = () => {
   const [videos, setVideos] = useState([]);
+  const { exploreState, exploreDispatch } = useExplore();
 
   useEffect(() => {
     (async () => {
@@ -17,6 +20,9 @@ export const Explore = () => {
     })();
   }, []);
 
+  const defaultState = [...videos];
+  const categoryVideos = setCategory(defaultState, exploreState.category);
+
   return (
     <div>
       <Navbar />
@@ -24,15 +30,50 @@ export const Explore = () => {
         <Sidebar />
         <main className="main-product">
           <div className="chip-container">
-            <span className="chips">All</span>
-            <span className="chips">One Piece</span>
-            <span className="chips">Naruto</span>
-            <span className="chips">Demon Slayer</span>
-            <span className="chips">Jujutsu kaisain</span>
+            <span
+              className="chips"
+              onClick={() => exploreDispatch({ type: "all" })}
+            >
+              All
+            </span>
+            <span
+              className="chips"
+              onClick={() => {
+                exploreDispatch({
+                  type: "onePiece",
+                });
+              }}
+            >
+              One Piece
+            </span>
+            <span
+              className="chips"
+              onClick={() => {
+                exploreDispatch({ type: "naruto" });
+              }}
+            >
+              Naruto
+            </span>
+            <span
+              className="chips"
+              onClick={() => {
+                exploreDispatch({ type: "demonSlayer" });
+              }}
+            >
+              Demon Slayer
+            </span>
+            <span
+              className="chips"
+              onClick={() => {
+                exploreDispatch({ type: "jujutsuKaisen" });
+              }}
+            >
+              Jujutsu kaisain
+            </span>
           </div>
 
           <div className="grid-three">
-            {videos.map((video) => (
+            {categoryVideos.map((video) => (
               <Card key={video._id} video={video} />
             ))}
           </div>
