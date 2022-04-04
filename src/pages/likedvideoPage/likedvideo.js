@@ -1,4 +1,4 @@
-import { Navbar, Sidebar, Card } from "../../components";
+import { Navbar, Sidebar } from "../../components";
 
 export const LikedVideo = () => {
   return (
@@ -7,9 +7,7 @@ export const LikedVideo = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          <div className="grid-three">
-            <Card />
-          </div>
+          <div className="grid-three"></div>
         </main>
       </section>
     </div>

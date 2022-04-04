@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { ExploreProvider } from "./context/exploreContext";
+import { ExploreProvider, LikedProvider } from "./context";
+
 // Call make Server
 makeServer();
 
@@ -12,7 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <ExploreProvider>
-        <App />
+        <LikedProvider>
+          <App />
+        </LikedProvider>
       </ExploreProvider>
     </Router>
   </React.StrictMode>,

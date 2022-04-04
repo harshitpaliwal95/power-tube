@@ -24,6 +24,9 @@ export const Card = ({ video }) => {
           <button>
             <i className={`bi bi-bookmarks card-icon`}></i>
           </button>
+          <button>
+            <i className={`bi bi-plus-circle-fill card-icon`}></i>
+          </button>
         </div>
       </div>
     </div>
