@@ -8,3 +8,6 @@
 .card-icon {
   font-size: 1.2rem;
 }
+.card-icon:hover {
+  background-color: #ffffff40;
+}
