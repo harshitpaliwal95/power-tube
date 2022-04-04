@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { Navbar, Sidebar, Card } from "../../components";
-import "./explore.css";
+import { Navbar, Sidebar, Card, Chips, chipsData } from "../../components";
+
 import axios from "axios";
 import { useExplore } from "../../context/exploreContext";
 import { setCategory } from "../../utils/setCategory";
 
 export const Explore = () => {
   const [videos, setVideos] = useState([]);
-  const { exploreState, exploreDispatch } = useExplore();
+  const { exploreState } = useExplore();
 
   useEffect(() => {
     (async () => {
@@ -30,46 +30,9 @@ export const Explore = () => {
         <Sidebar />
         <main className="main-product">
           <div className="chip-container">
-            <span
-              className="chips"
-              onClick={() => exploreDispatch({ type: "all" })}
-            >
-              All
-            </span>
-            <span
-              className="chips"
-              onClick={() => {
-                exploreDispatch({
-                  type: "onePiece",
-                });
-              }}
-            >
-              One Piece
-            </span>
-            <span
-              className="chips"
-              onClick={() => {
-                exploreDispatch({ type: "naruto" });
-              }}
-            >
-              Naruto
-            </span>
-            <span
-              className="chips"
-              onClick={() => {
-                exploreDispatch({ type: "demonSlayer" });
-              }}
-            >
-              Demon Slayer
-            </span>
-            <span
-              className="chips"
-              onClick={() => {
-                exploreDispatch({ type: "jujutsuKaisen" });
-              }}
-            >
-              Jujutsu kaisain
-            </span>
+            {chipsData.map((item) => (
+              <Chips key={item.chipName} data={item} />
+            ))}
           </div>
 
           <div className="grid-three">
