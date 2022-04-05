@@ -8,3 +8,12 @@
 .card-icon {
   font-size: 1.2rem;
 }
+.card-icon:hover {
+  background-color: #ffffff40;
+}
+.empty-img {
+  margin: 1rem;
+  width: 30rem;
+  height: 20rem;
+  object-fit: cover;
+}

@@ -1,5 +1,6 @@
 import "./chips.css";
 import { useExplore } from "../../context/exploreContext";
+import { ACTION } from "../../action/action";
 
 export const Chips = ({ data }) => {
   const { exploreDispatch } = useExplore();
@@ -9,7 +10,9 @@ export const Chips = ({ data }) => {
   return (
     <span
       className="chips"
-      onClick={() => exploreDispatch({ type: "FILTER", payload: chipType })}
+      onClick={() =>
+        exploreDispatch({ type: ACTION.FILTER, payload: chipType })
+      }
     >
       {chipName}
     </span>

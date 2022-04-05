@@ -1,6 +1,8 @@
+import { ACTION } from "../action/action";
+
 const exploreReducer = (state, { type, payload }) => {
   switch (type) {
-    case "FILTER":
+    case ACTION.FILTER:
       return {
         ...state,
         category: {
