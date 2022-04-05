@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Navbar, Sidebar, Card } from "../../components";
+import { Navbar, Sidebar, Card, Modal } from "../../components";
 import axios from "axios";
 
 import "./home.css";
@@ -25,6 +25,7 @@ export const Home = () => {
     <div>
       <Navbar />
       <section className="main-box">
+        {false && <Modal />}
         <Sidebar />
         <main className="main-product">
           {loader && <div className="heading-lg">....loading</div>}
