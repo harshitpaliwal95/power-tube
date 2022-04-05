@@ -1,7 +1,6 @@
 import { ACTION } from "../../action/action";
 import { useVideoGlobal } from "../../context/globalContext";
 import { findItem } from "../../utils/findItem";
-import { useState } from "react";
 import "./card.css";
 
 export const Card = ({ video }) => {
