@@ -1,2 +1,2 @@
 export { useExplore, ExploreProvider } from "./exploreContext";
-export { GlobalProvider, useGlobal } from "./globalContext";
+export { GlobalProvider, useVideoGlobal } from "./globalContext";

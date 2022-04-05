@@ -1,5 +1,5 @@
 import { ACTION } from "../../action/action";
-import { useGlobal } from "../../context/globalContext";
+import { useVideoGlobal } from "../../context/globalContext";
 import { findItem } from "../../utils/findItem";
 import { useState } from "react";
 import "./card.css";
@@ -9,10 +9,7 @@ export const Card = ({ video }) => {
   const {
     globalState: { likeVideo, watchLater },
     globalDispatch,
-  } = useGlobal();
-
-  const [likeBtn, setLikeBtn] = useState("");
-  const [watchLaterBtn, setWatchLaterBtn] = useState("");
+  } = useVideoGlobal();
 
   const isVideoInLiked = findItem(likeVideo, _id);
   const isVideoInWatchLater = findItem(watchLater, _id);
@@ -23,13 +20,11 @@ export const Card = ({ video }) => {
         type: ACTION.REMOVE_FORM_LIKED_VIDEO,
         payload: data._id,
       });
-      setLikeBtn("");
     } else {
       globalDispatch({
         type: ACTION.ADD_TO_LIKED_VIDEO,
         payload: data,
       });
-      setLikeBtn("-fill");
     }
   };
   const watchLaterHandler = (data) => {
@@ -38,13 +33,11 @@ export const Card = ({ video }) => {
         type: ACTION.REMOVE_FORM_WATCH_LATER,
         payload: data._id,
       });
-      setWatchLaterBtn("");
     } else {
       globalDispatch({
         type: ACTION.ADD_TO_WATCH_LATER,
         payload: data,
       });
-      setWatchLaterBtn("-fill");
     }
   };
 
@@ -64,10 +57,18 @@ export const Card = ({ video }) => {
       <div className="card-btn-footer">
         <div className="card-icon-btn-right">
           <button onClick={() => likedVideoHandler(video)}>
-            <i className={`bi bi-hand-thumbs-up${likeBtn} card-icon`}></i>
+            <i
+              className={`bi bi-hand-thumbs-up${
+                isVideoInLiked ? "-fill" : ""
+              } card-icon`}
+            ></i>
           </button>
           <button onClick={() => watchLaterHandler(video)}>
-            <i className={`bi bi-bookmarks${watchLaterBtn} card-icon`}></i>
+            <i
+              className={`bi bi-bookmarks${
+                isVideoInWatchLater ? "-fill" : ""
+              } card-icon`}
+            ></i>
           </button>
           <button>
             <i className={`bi bi-plus-circle-fill card-icon`}></i>

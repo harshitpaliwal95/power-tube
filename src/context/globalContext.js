@@ -16,6 +16,6 @@ const GlobalProvider = ({ children }) => {
   );
 };
 
-const useGlobal = () => useContext(GlobalContext);
+const useVideoGlobal = () => useContext(GlobalContext);
 
-export { GlobalProvider, useGlobal };
+export { GlobalProvider, useVideoGlobal };
