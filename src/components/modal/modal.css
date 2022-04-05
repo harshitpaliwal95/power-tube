@@ -11,6 +11,8 @@
   position: fixed;
   background-color: #0000006b;
   z-index: 1111;
+  left: 0;
+  top: 0;
 }
 .modal-contant {
   display: flex;

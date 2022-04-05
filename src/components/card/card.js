@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { ACTION } from "../../action/action";
 import { useVideoGlobal } from "../../context/globalContext";
 import { findItem } from "../../utils/findItem";
+import { Modal } from "../modal/modal";
 import "./card.css";
 
 export const Card = ({ video }) => {
@@ -10,6 +12,7 @@ export const Card = ({ video }) => {
     globalDispatch,
   } = useVideoGlobal();
 
+  const [model, setModel] = useState(false);
   const isVideoInLiked = findItem(likeVideo, _id);
   const isVideoInWatchLater = findItem(watchLater, _id);
 
@@ -42,6 +45,7 @@ export const Card = ({ video }) => {
 
   return (
     <div className="card-component">
+      {model && <Modal setModel={setModel} />}
       <div className="card-comp-img">
         <img
           className="card-top-img"
@@ -59,18 +63,18 @@ export const Card = ({ video }) => {
             <i
               className={`bi bi-hand-thumbs-up${
                 isVideoInLiked ? "-fill" : ""
-              } card-icon`}
+              } btn-icon`}
             ></i>
           </button>
           <button onClick={() => watchLaterHandler(video)}>
             <i
               className={`bi bi-bookmarks${
                 isVideoInWatchLater ? "-fill" : ""
-              } card-icon`}
+              } btn-icon`}
             ></i>
           </button>
-          <button>
-            <i className={`bi bi-plus-circle-fill card-icon`}></i>
+          <button onClick={() => setModel(true)}>
+            <i className={`bi bi-plus-circle-fill btn-icon`}></i>
           </button>
         </div>
       </div>

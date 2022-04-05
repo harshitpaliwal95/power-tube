@@ -1,12 +1,12 @@
 import "./modal.css";
 
-export const Modal = () => {
+export const Modal = ({ setModel }) => {
   return (
     <div className="modal-layer">
       <div className="modal-box">
         <div className="modal-head">
           <span className="heading-lg">Add To Playlist</span>
-          <button className="btn-icon">
+          <button className="btn-icon" onClick={() => setModel(false)}>
             <i className="bi bi-x-lg"></i>
           </button>
         </div>
