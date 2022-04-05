@@ -1,6 +1,6 @@
 import empty from "../../assets/empty.jpg";
 
-export const EmptyComp = () => {
+export const PagePlaceHolder = () => {
   return (
     <div>
       <p className="text-lg text-center">Wohooo Nothing in here</p>

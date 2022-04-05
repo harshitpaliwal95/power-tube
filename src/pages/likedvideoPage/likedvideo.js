@@ -1,10 +1,10 @@
-import { Card, EmptyComp, Navbar, Sidebar } from "../../components";
-import { useGlobal } from "../../context/globalContext";
+import { Card, PagePlaceHolder, Navbar, Sidebar } from "../../components";
+import { useVideoGlobal } from "../../context/globalContext";
 
 export const LikedVideo = () => {
   const {
     globalState: { likeVideo },
-  } = useGlobal();
+  } = useVideoGlobal();
 
   return (
     <div>
@@ -12,7 +12,7 @@ export const LikedVideo = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          {likeVideo.length === 0 && <EmptyComp />}
+          {likeVideo.length === 0 && <PagePlaceHolder />}
           <div className="grid-three">
             {likeVideo.map((video) => (
               <Card key={video._id} video={video} />
