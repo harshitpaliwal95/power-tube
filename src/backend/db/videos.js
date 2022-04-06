@@ -5,6 +5,24 @@
 
 export const videos = [
   {
+    _id: "QBwfaul1-d0",
+    title: "One piece - I am Dangerousᴴᴰ",
+    anime: "one piece",
+    category: "onePiece",
+  },
+  {
+    _id: "Ch-ytWO7Vts",
+    title: "Inosuke Hashibira - Finish Line",
+    anime: "demon slayer",
+    category: "demonSlayer",
+  },
+  {
+    _id: "ixbZ44uYXUA",
+    title: "naruto AMV all",
+    anime: "naruto",
+    category: "naruto",
+  },
+  {
     _id: "BNiVl0bAhsQ",
     title: "One Piece - Centuries",
     anime: "one piece",
@@ -16,12 +34,7 @@ export const videos = [
     anime: "one piece",
     category: "onePiece",
   },
-  {
-    _id: "QBwfaul1-d0",
-    title: "One piece - I am Dangerousᴴᴰ",
-    anime: "one piece",
-    category: "onePiece",
-  },
+
   {
     _id: "Yb9T5VtMOdc",
     title: "One Piece-Imagine Dragons | Enemy",
@@ -124,12 +137,7 @@ export const videos = [
     anime: "naruto",
     category: "naruto",
   },
-  {
-    _id: "ixbZ44uYXUA",
-    title: "naruto AMV all",
-    anime: "naruto",
-    category: "naruto",
-  },
+
   {
     _id: "DI5d-TrmIYw",
     title: "Guy VS Madara AMV",
@@ -151,12 +159,6 @@ export const videos = [
   {
     _id: "-LEl83konr4",
     title: "Demon Slayer - Blood // Water",
-    anime: "demon slayer",
-    category: "demonSlayer",
-  },
-  {
-    _id: "Ch-ytWO7Vts",
-    title: "Inosuke Hashibira - Finish Line",
     anime: "demon slayer",
     category: "demonSlayer",
   },

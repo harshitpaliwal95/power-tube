@@ -1,5 +1,5 @@
 import { Navbar, Sidebar } from "../../components";
-import { NewPlatlist } from "./components/newPlatlist";
+import { NewPlaylist } from "./components/newPlatlist";
 
 export const Playlist = () => {
   return (
@@ -9,7 +9,7 @@ export const Playlist = () => {
         <Sidebar />
         <main className="main-product">
           <div className="grid-three">
-            <NewPlatlist />
+            <NewPlaylist />
           </div>
         </main>
       </section>
