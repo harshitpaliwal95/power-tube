@@ -10,6 +10,7 @@ import {
   SignUp,
   WatchLater,
 } from "./pages";
+import { SelectVideoPlaylist } from "./pages/playlistPage/selectVideoPlaylist";
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/liked" element={<LikedVideo />} />
         <Route path="/watchlater" element={<WatchLater />} />
+        <Route path="/demo" element={<SelectVideoPlaylist />} />
       </Routes>
     </div>
   );
