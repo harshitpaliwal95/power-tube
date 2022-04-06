@@ -27,6 +27,19 @@ label {
 input {
   margin-right: 0.4rem;
 }
+.newplaylist-input {
+  padding: 0.5rem;
+
+  color: black;
+}
+.playlist-box {
+  margin: 1rem 0 0 0;
+  display: flex;
+  align-items: center;
+}
+.playlist-box i {
+  font-size: 1.5rem;
+}
 
 .modal-head {
   display: flex;
@@ -39,7 +52,6 @@ input {
 }
 .create-playlist-btn {
   color: var(--white);
-  margin: 1rem;
-
+  margin: 0rem 1rem 1rem 1rem;
   cursor: pointer;
 }

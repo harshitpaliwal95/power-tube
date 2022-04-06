@@ -12,7 +12,7 @@ export const Card = ({ video }) => {
     globalDispatch,
   } = useVideoGlobal();
 
-  const [model, setModel] = useState(false);
+  const [modal, setModal] = useState(false);
   const isVideoInLiked = findItem(likeVideo, _id);
   const isVideoInWatchLater = findItem(watchLater, _id);
 
@@ -45,7 +45,7 @@ export const Card = ({ video }) => {
 
   return (
     <div className="card-component">
-      {model && <Modal setModel={setModel} />}
+      {modal && <Modal setModal={setModal} />}
       <div className="card-comp-img">
         <img
           className="card-top-img"
@@ -73,7 +73,7 @@ export const Card = ({ video }) => {
               } btn-icon`}
             ></i>
           </button>
-          <button onClick={() => setModel(true)}>
+          <button onClick={() => setModal(true)}>
             <i className={`bi bi-plus-circle-fill btn-icon`}></i>
           </button>
         </div>
