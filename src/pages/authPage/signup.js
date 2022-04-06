@@ -7,9 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
 
 export function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("harshit");
+  const [email, setEmail] = useState("harshit@gmail.com");
+  const [password, setPassword] = useState("1234");
 
   const navigate = useNavigate();
 
