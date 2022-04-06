@@ -3,4 +3,17 @@
 }
 .card-component {
   cursor: pointer;
+  justify-content: space-between;
+}
+.card-icon {
+  font-size: 1.2rem;
+}
+.btn-icon:hover {
+  background-color: #ffffff40;
+}
+.empty-img {
+  margin: 1rem;
+  width: 30rem;
+  height: 20rem;
+  object-fit: cover;
 }

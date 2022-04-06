@@ -4,16 +4,19 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./context/authcontext";
+import { ExploreProvider, GlobalProvider } from "./context";
+
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <ExploreProvider>
+        <GlobalProvider>
+          <App />
+        </GlobalProvider>
+      </ExploreProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

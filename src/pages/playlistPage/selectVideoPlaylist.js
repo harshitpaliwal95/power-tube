@@ -2,9 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Navbar, Sidebar, Card } from "../../components";
 import axios from "axios";
 
-import "./home.css";
-
-export const Home = () => {
+export const SelectVideoPlaylist = () => {
   const [videos, setVideos] = useState([]);
   const [loader, setLoader] = useState(false);
 
