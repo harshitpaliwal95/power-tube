@@ -10,8 +10,7 @@ export const Modal = ({ setModal, video }) => {
   const {
     auth: { token },
   } = useAuth();
-  const { playlistName, setPlaylistName, playlist, setPlaylist } =
-    usePlaylist();
+  const { playlistName, setPlaylistName, setPlaylist } = usePlaylist();
   const [title, setTitle] = useState("");
 
   const header = { authorization: token };
