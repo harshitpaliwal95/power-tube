@@ -29,7 +29,6 @@ input {
 }
 .newplaylist-input {
   padding: 0.5rem;
-
   color: black;
 }
 .playlist-box {
@@ -54,4 +53,9 @@ input {
   color: var(--white);
   margin: 0rem 1rem 1rem 1rem;
   cursor: pointer;
+}
+@media only screen and (max-width: 1100px) {
+  .newplaylist-input {
+    width: 60%;
+  }
 }

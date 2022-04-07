@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ACTION } from "../../action/action";
-import { useVideoGlobal } from "../../context/globalContext";
+import { useVideoGlobal } from "../../context";
 import { findItem } from "../../utils/findItem";
 import { Modal } from "../modal/modal";
 import "./card.css";
@@ -45,7 +45,7 @@ export const Card = ({ video }) => {
 
   return (
     <div className="card-component">
-      {modal && <Modal setModal={setModal} />}
+      {modal && <Modal setModal={setModal} video={video} />}
       <div className="card-comp-img">
         <img
           className="card-top-img"
@@ -73,9 +73,17 @@ export const Card = ({ video }) => {
               } btn-icon`}
             ></i>
           </button>
-          <button onClick={() => setModal(true)}>
-            <i className={`bi bi-plus-circle-fill btn-icon`}></i>
-          </button>
+          {false ? (
+            <button
+            // onClick={() => deleteFromPlaylist(video._id, playlist._id)}
+            >
+              <i className={`bi bi-trash btn-icon`}></i>
+            </button>
+          ) : (
+            <button onClick={() => setModal(true)}>
+              <i className={`bi bi-plus-circle-fill btn-icon`}></i>
+            </button>
+          )}
         </div>
       </div>
     </div>

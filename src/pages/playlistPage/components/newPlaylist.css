@@ -2,9 +2,22 @@
   width: 20rem;
   height: 16rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
+.create-playlist div {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  width: 90%;
+}
+.create-playlist p {
+  margin-left: 1rem;
+}
+.trash-icon {
+  margin-left: auto;
+}
+
 .create-playlist i {
   font-size: 1.5rem;
 }
