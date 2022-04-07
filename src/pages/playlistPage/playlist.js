@@ -22,6 +22,7 @@ export const Playlist = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     if (isAuth) {
       getdata();
