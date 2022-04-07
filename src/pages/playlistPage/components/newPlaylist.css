@@ -9,15 +9,15 @@
   margin: 1rem;
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 90%;
 }
 .create-playlist p {
   margin-left: 1rem;
 }
-img {
-  width: 100%;
-  height: 100%;
+.trash-icon {
+  margin-left: auto;
 }
+
 .create-playlist i {
   font-size: 1.5rem;
 }

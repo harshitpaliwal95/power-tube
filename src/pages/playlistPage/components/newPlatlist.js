@@ -17,6 +17,7 @@ export const NewPlaylist = ({ playlist }) => {
       <div className="heading-lg">
         <i className="bi bi-list-ul"></i>{" "}
         <p className="text-lg">{playlist.title}</p>
+        <i className="bi bi-trash trash-icon"></i>
       </div>
     </div>
   );
