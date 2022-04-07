@@ -21,7 +21,7 @@ export function Login() {
         toast.success("login Succesfully");
         setTimeout(() => {
           navigate("/");
-        }, 1200);
+        }, 2500);
       } else {
         toast.error("Wrong email or password try again!");
       }

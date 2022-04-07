@@ -26,7 +26,7 @@ export function SignUp() {
       toast.success("Sign Up Succesfully");
       setTimeout(() => {
         navigate("/login");
-      }, 1000);
+      }, 2500);
     } catch (error) {
       console.log(error);
       toast.error("Failed to SignUp try Again");
