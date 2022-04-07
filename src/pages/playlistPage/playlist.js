@@ -1,10 +1,11 @@
 import { Navbar, Sidebar, PagePlaceHolder } from "../../components";
 import { NewPlaylist } from "./components/newPlatlist";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 import axios from "axios";
+import { usePlaylist } from "../../context";
 export const Playlist = () => {
-  const [playlist, setPlaylist] = useState([]);
+  const { playlist, setPlaylist } = usePlaylist();
   const {
     auth: { token, isAuth },
   } = useAuth();

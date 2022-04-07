@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ACTION } from "../../action/action";
-import { useVideoGlobal } from "../../context/globalContext";
+import { useVideoGlobal } from "../../context";
 import { findItem } from "../../utils/findItem";
 import { Modal } from "../modal/modal";
 import "./card.css";
 
-export const Card = ({ video, playlist }) => {
+export const Card = ({ video }) => {
   const { title, anime, _id } = video;
   const {
     globalState: { likeVideo, watchLater },
@@ -73,8 +73,10 @@ export const Card = ({ video, playlist }) => {
               } btn-icon`}
             ></i>
           </button>
-          {playlist ? (
-            <button>
+          {false ? (
+            <button
+            // onClick={() => deleteFromPlaylist(video._id, playlist._id)}
+            >
               <i className={`bi bi-trash btn-icon`}></i>
             </button>
           ) : (

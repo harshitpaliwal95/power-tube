@@ -44,7 +44,8 @@ export const Modal = ({ setModal, video }) => {
       const response = await axios.post(postLink, sendVideo, {
         headers: header,
       });
-      setPlaylist(response.data.playlist);
+      setPlaylist(response.data.playlists);
+      console.log(response.data.playlists);
     } catch (error) {
       console.log(error);
     }
