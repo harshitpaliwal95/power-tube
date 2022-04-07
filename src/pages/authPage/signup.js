@@ -20,18 +20,16 @@ export function SignUp() {
       name: name,
       lastName: "heyhey",
     };
-    console.log(body);
     try {
       const response = await axios.post("/api/auth/signup", body);
       localStorage.setItem("token", response.data.encodedToken);
-      console.log(response.data.encodedToken);
       toast.success("Sign Up Succesfully");
       setTimeout(() => {
         navigate("/login");
       }, 1000);
     } catch (error) {
       console.log(error);
-      toast.error("Failed to SignUp");
+      toast.error("Failed to SignUp try Again");
     }
   };
 

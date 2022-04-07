@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./auth.css";
 import axios from "axios";
 export function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("adarshbalika@gmail.com");
+  const [password, setPassword] = useState("adarshBalika123");
+
+  const navigate = useNavigate();
 
   const logInHandler = async () => {
     const body = {
@@ -15,11 +17,17 @@ export function Login() {
     };
     try {
       const response = await axios.post("/api/auth/login", body);
-      response.data.encodedToken
-        ? toast.success("login Succesfully")
-        : toast.error("Wrong email or password try again!");
+      if (response.data.encodedToken) {
+        toast.success("login Succesfully");
+        setTimeout(() => {
+          navigate("/");
+        }, 1200);
+      } else {
+        toast.error("Wrong email or password try again!");
+      }
     } catch (error) {
       console.log(error.message);
+      toast.error("Unable To Login Try Again Later");
     }
   };
 
@@ -64,6 +72,14 @@ export function Login() {
                   onClick={() => logInHandler()}
                 >
                   Log In
+                </button>
+                <button
+                  className="btn btn-outline guest-btn"
+                  onClick={() => {
+                    logInHandler();
+                  }}
+                >
+                  Log In As Guest
                 </button>
               </div>
               <div className="new-ac">
