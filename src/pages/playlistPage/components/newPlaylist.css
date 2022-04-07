@@ -9,8 +9,10 @@
   margin: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 24%;
+  width: 80%;
+}
+.create-playlist p {
+  margin-left: 1rem;
 }
 img {
   width: 100%;

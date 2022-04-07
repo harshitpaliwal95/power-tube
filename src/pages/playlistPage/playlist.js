@@ -5,22 +5,24 @@ import { useAuth } from "../../context/authContext";
 import axios from "axios";
 export const Playlist = () => {
   const {
-    auth: { token },
+    auth: { token, isAuth },
   } = useAuth();
   const [playlist, setPlaylist] = useState([]);
 
   const header = { authorization: token };
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get("/api/user/playlists", {
-          headers: header,
-        });
-        setPlaylist(response.data.playlists);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    if (isAuth) {
+      (async () => {
+        try {
+          const response = await axios.get("/api/user/playlists", {
+            headers: header,
+          });
+          setPlaylist(response.data.playlists);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    }
   }, []);
 
   return (

@@ -3,14 +3,14 @@ import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { usePlaylist } from "../../context";
 
 export const Modal = ({ setModal }) => {
   const [createPlaylist, setCreatePlaylist] = useState(false);
   const {
     auth: { token },
   } = useAuth();
-  const [playlistName, setPlaylistName] = useState([]);
-
+  const { playlist, setPlaylist } = usePlaylist();
   const [title, setTitle] = useState("");
 
   const createPlaylistHandler = async () => {
@@ -27,7 +27,7 @@ export const Modal = ({ setModal }) => {
           headers: header,
         }
       );
-      setPlaylistName(response.data.playlists);
+      setPlaylist(response.data.playlists);
       setCreatePlaylist(false);
     } catch (e) {
       console.log(e.message);
@@ -46,8 +46,8 @@ export const Modal = ({ setModal }) => {
           </button>
         </div>
         <div className="modal-contant">
-          {playlistName.length > 0 &&
-            playlistName.map((playlist) => (
+          {playlist.length > 0 &&
+            playlist.map((playlist) => (
               <label key={playlist._id}>
                 <input type="checkbox"></input>
                 {playlist.title}
