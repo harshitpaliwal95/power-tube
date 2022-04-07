@@ -7,11 +7,11 @@ export const NewPlaylist = ({ playlist }) => {
   return (
     <div
       className="card-component create-playlist"
-      onClick={() => navigate("/demo")}
+      onClick={() => navigate(`/playlist/${playlist._id}`)}
     >
       <img
         className="card-top-img"
-        src="https://i.ytimg.com/vi/CuvRbljK7Ts/hqdefault.jpg"
+        src="https://i.ytimg.com/vi/EK5Ua8qOLuo/hqdefault.jpg"
         alt="loading"
       />
       <div className="heading-lg">

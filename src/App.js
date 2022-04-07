@@ -23,7 +23,7 @@ function App() {
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/liked" element={<LikedVideo />} />
         <Route path="/watchlater" element={<WatchLater />} />
-        <Route path="/demo" element={<SelectVideoPlaylist />} />
+        <Route path="/playlist/:id" element={<SelectVideoPlaylist />} />
       </Routes>
     </div>
   );

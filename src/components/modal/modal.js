@@ -5,16 +5,18 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { usePlaylist } from "../../context";
 
-export const Modal = ({ setModal }) => {
+export const Modal = ({ setModal, video }) => {
   const [createPlaylist, setCreatePlaylist] = useState(false);
   const {
     auth: { token },
   } = useAuth();
-  const { playlist, setPlaylist } = usePlaylist();
+  const { playlistName, setPlaylistName, playlist, setPlaylist } =
+    usePlaylist();
   const [title, setTitle] = useState("");
 
+  const header = { authorization: token };
+
   const createPlaylistHandler = async () => {
-    const header = { authorization: token };
     const data = {
       title: title,
       description: "this is my new playlist",
@@ -27,11 +29,25 @@ export const Modal = ({ setModal }) => {
           headers: header,
         }
       );
-      setPlaylist(response.data.playlists);
+      setPlaylistName(response.data.playlists);
       setCreatePlaylist(false);
     } catch (e) {
       console.log(e.message);
       toast.error("please Login first");
+    }
+  };
+
+  const addVideoToPlaylist = async (video, id) => {
+    const postLink = "/api/user/playlists/" + id;
+    const sendVideo = { video: video };
+
+    try {
+      const response = await axios.post(postLink, sendVideo, {
+        headers: header,
+      });
+      setPlaylist(response.data.playlist);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -46,10 +62,13 @@ export const Modal = ({ setModal }) => {
           </button>
         </div>
         <div className="modal-contant">
-          {playlist.length > 0 &&
-            playlist.map((playlist) => (
+          {playlistName.length > 0 &&
+            playlistName.map((playlist) => (
               <label key={playlist._id}>
-                <input type="checkbox"></input>
+                <input
+                  type="checkbox"
+                  onChange={() => addVideoToPlaylist(video, playlist._id)}
+                ></input>
                 {playlist.title}
               </label>
             ))}

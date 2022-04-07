@@ -5,7 +5,7 @@ import { findItem } from "../../utils/findItem";
 import { Modal } from "../modal/modal";
 import "./card.css";
 
-export const Card = ({ video }) => {
+export const Card = ({ video, playlist }) => {
   const { title, anime, _id } = video;
   const {
     globalState: { likeVideo, watchLater },
@@ -45,7 +45,7 @@ export const Card = ({ video }) => {
 
   return (
     <div className="card-component">
-      {modal && <Modal setModal={setModal} />}
+      {modal && <Modal setModal={setModal} video={video} />}
       <div className="card-comp-img">
         <img
           className="card-top-img"
@@ -73,9 +73,15 @@ export const Card = ({ video }) => {
               } btn-icon`}
             ></i>
           </button>
-          <button onClick={() => setModal(true)}>
-            <i className={`bi bi-plus-circle-fill btn-icon`}></i>
-          </button>
+          {playlist ? (
+            <button>
+              <i className={`bi bi-trash btn-icon`}></i>
+            </button>
+          ) : (
+            <button onClick={() => setModal(true)}>
+              <i className={`bi bi-plus-circle-fill btn-icon`}></i>
+            </button>
+          )}
         </div>
       </div>
     </div>
