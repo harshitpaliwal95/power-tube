@@ -46,6 +46,9 @@
 .new-ac {
   margin: 0rem 0rem 0.8rem 0;
 }
+.guest-btn{
+  margin-top: .5rem;
+}
 @media only screen and (max-width: 600px) {
   .form-container {
     height: 60vh;

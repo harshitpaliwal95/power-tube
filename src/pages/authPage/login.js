@@ -1,22 +1,68 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import "./auth.css";
+import axios from "axios";
+import { useAuth } from "../../context/authContext";
 export function Login() {
+  const [email, setEmail] = useState("adarshbalika@gmail.com");
+  const [password, setPassword] = useState("adarshBalika123");
+
+  const { setAuth } = useAuth();
+
+  const navigate = useNavigate();
+
+  const logInHandler = async () => {
+    const body = {
+      email: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post("/api/auth/login", body);
+      localStorage.setItem("token", response.data.encodedToken);
+      if (response.data.encodedToken) {
+        toast.success("login Succesfully");
+        setAuth(() => ({
+          token: response.data.encodedToken,
+          isAuth: true,
+        }));
+        setTimeout(() => {
+          navigate("/");
+        }, 2500);
+      } else {
+        toast.error("Wrong email or password try again!");
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error("Unable To Login Try Again Later");
+    }
+  };
+
   return (
     <div>
       <Navbar />
       <main>
+        <ToastContainer />
         <div className="form-container">
           <div className="form-info">
             <p className="heading-x-lg text-center">Login</p>
             <div className="form-input">
               <div className="input-box">
                 <label className="text-medium">Email Address</label>
-                <input type="text" placeholder="demo@yahoo.com" />
+                <input
+                  type="text"
+                  placeholder="demo@yahoo.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div className="input-box">
                 <label className="text-medium">Password</label>
-                <input type="text" placeholder="*******" />
+                <input
+                  type="text"
+                  placeholder="*******"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <div className="space-between forget-pass">
                 <span>
@@ -29,7 +75,20 @@ export function Login() {
                 </span>
               </div>
               <div className="form-btn">
-                <button className="btn btn-outline">Log In</button>
+                <button
+                  className="btn btn-outline"
+                  onClick={() => logInHandler()}
+                >
+                  Log In
+                </button>
+                <button
+                  className="btn btn-outline guest-btn"
+                  onClick={() => {
+                    logInHandler();
+                  }}
+                >
+                  Log In As Guest
+                </button>
               </div>
               <div className="new-ac">
                 <Link to="/signup">
