@@ -2,8 +2,19 @@
   width: 20rem;
   height: 16rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.create-playlist div {
+  margin: 1rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 24%;
+}
+img {
+  width: 100%;
+  height: 100%;
 }
 .create-playlist i {
   font-size: 1.5rem;
