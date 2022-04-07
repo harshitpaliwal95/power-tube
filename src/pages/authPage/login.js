@@ -4,9 +4,12 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "./auth.css";
 import axios from "axios";
+import { useAuth } from "../../context/authContext";
 export function Login() {
   const [email, setEmail] = useState("adarshbalika@gmail.com");
   const [password, setPassword] = useState("adarshBalika123");
+
+  const { setAuth } = useAuth();
 
   const navigate = useNavigate();
 
@@ -17,8 +20,13 @@ export function Login() {
     };
     try {
       const response = await axios.post("/api/auth/login", body);
+      localStorage.setItem("token", response.data.encodedToken);
       if (response.data.encodedToken) {
         toast.success("login Succesfully");
+        setAuth(() => ({
+          token: response.data.encodedToken,
+          isAuth: true,
+        }));
         setTimeout(() => {
           navigate("/");
         }, 2500);
