@@ -2,6 +2,12 @@
 
 <p align="center">Watch some cool avm</p>
 
+### preview
+![Webp net-gifmaker(2)](https://user-images.githubusercontent.com/60725346/162483620-fad79da9-71ea-458c-8391-3bcf25bf832d.gif)
+
+
+
+
 
 ## Live link
   https://power-tube.netlify.app/
