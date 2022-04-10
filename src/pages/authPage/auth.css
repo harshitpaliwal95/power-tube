@@ -16,6 +16,12 @@
 }
 .input-box {
   margin: 0.5rem 0rem;
+  position: relative;
+}
+.input-box .btn-icon {
+  position: absolute;
+  bottom: 3px;
+  right: 0;
 }
 .input-box input {
   background-color: var(--light-gray-v2);
@@ -46,8 +52,8 @@
 .new-ac {
   margin: 0rem 0rem 0.8rem 0;
 }
-.guest-btn{
-  margin-top: .5rem;
+.guest-btn {
+  margin-top: 0.5rem;
 }
 @media only screen and (max-width: 600px) {
   .form-container {

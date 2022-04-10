@@ -10,6 +10,7 @@ export function SignUp() {
   const [name, setName] = useState("harshit");
   const [email, setEmail] = useState("harshit@gmail.com");
   const [password, setPassword] = useState("1234");
+  const [showPassword, setShowPassword] = useState("password");
 
   const navigate = useNavigate();
 
@@ -63,11 +64,25 @@ export function SignUp() {
               <div className="input-box">
                 <label className="text-medium">Password</label>
                 <input
-                  type="password"
+                  type={showPassword}
                   name="password"
                   placeholder="*******"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  className="btn-icon"
+                  onClick={() =>
+                    setShowPassword(
+                      showPassword === "password" ? "text" : "password"
+                    )
+                  }
+                >
+                  <i
+                    className={`bi bi-eye${
+                      showPassword === "password" ? "" : "-slash"
+                    }`}
+                  ></i>
+                </button>
               </div>
               <div className="space-between forget-pass">
                 <span>

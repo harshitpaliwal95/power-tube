@@ -8,6 +8,7 @@ import { useAuth } from "../../context/authContext";
 export function Login() {
   const [email, setEmail] = useState("adarshbalika@gmail.com");
   const [password, setPassword] = useState("adarshBalika123");
+  const [showPassword, setShowPassword] = useState("password");
 
   const { setAuth } = useAuth();
 
@@ -51,7 +52,8 @@ export function Login() {
               <div className="input-box">
                 <label className="text-medium">Email Address</label>
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
                   placeholder="demo@yahoo.com"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -59,10 +61,25 @@ export function Login() {
               <div className="input-box">
                 <label className="text-medium">Password</label>
                 <input
-                  type="text"
+                  type={showPassword}
+                  name="password"
                   placeholder="*******"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  className="btn-icon"
+                  onClick={() =>
+                    setShowPassword(
+                      showPassword === "password" ? "text" : "password"
+                    )
+                  }
+                >
+                  <i
+                    className={`bi bi-eye${
+                      showPassword === "password" ? "" : "-slash"
+                    }`}
+                  ></i>
+                </button>
               </div>
               <div className="space-between forget-pass">
                 <span>
