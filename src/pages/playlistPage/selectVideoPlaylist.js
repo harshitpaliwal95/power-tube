@@ -1,14 +1,29 @@
 import { Navbar, Sidebar, Card } from "../../components";
-import { usePlaylist } from "../../context";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../context";
+import axios from "axios";
 
 export const SelectVideoPlaylist = () => {
-  const { playlist } = usePlaylist();
+  const [selectedVideo, setSelectedVideo] = useState();
+  const {
+    auth: { token },
+  } = useAuth();
 
   const { id } = useParams();
-  console.log(id);
-  console.log(playlist);
-  const playlistToRender = playlist.find((obj) => obj._id === id);
+
+  const header = { authorization: token };
+  useEffect(() => {
+    const getLink = "/api/user/playlists/" + id;
+    (async () => {
+      try {
+        const response = await axios.get(getLink, { headers: header });
+        setSelectedVideo(response.data.playlist.videos);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <div>
@@ -17,8 +32,8 @@ export const SelectVideoPlaylist = () => {
         <Sidebar />
         <main className="main-product">
           <div className="grid-three">
-            {id &&
-              playlistToRender.videos.map((video) => (
+            {selectedVideo &&
+              selectedVideo.map((video) => (
                 <Card key={video._id} video={video} />
               ))}
           </div>
