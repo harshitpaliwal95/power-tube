@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { ACTION } from "../../action/action";
-import { useVideoGlobal } from "../../context";
+import { useVideoGlobal, useAuth, usePlaylist } from "../../context";
 import { findItem } from "../../utils/findItem";
 import { Modal } from "../modal/modal";
 import "./card.css";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export const Card = ({ video }) => {
+  const { setPlaylist } = usePlaylist();
+
+  const { id } = useParams();
+  const {
+    auth: { token },
+  } = useAuth();
+  const header = { authorization: token };
+
   const { title, anime, _id } = video;
   const {
     globalState: { likeVideo, watchLater },
@@ -43,6 +53,17 @@ export const Card = ({ video }) => {
     }
   };
 
+  const deleteFromPlaylist = async (playlistId, videoId) => {
+    const deleteLink = `/api/user/playlists/${playlistId}/${videoId}`;
+    try {
+      const response = await axios.delete(deleteLink, { headers: header });
+      setPlaylist(response.data.playlists);
+      console.log(response.data.playlists);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="card-component">
       {modal && <Modal setModal={setModal} video={video} />}
@@ -73,10 +94,8 @@ export const Card = ({ video }) => {
               } btn-icon`}
             ></i>
           </button>
-          {false ? (
-            <button
-            // onClick={() => deleteFromPlaylist(video._id, playlist._id)}
-            >
+          {id ? (
+            <button onClick={() => deleteFromPlaylist(id, video._id)}>
               <i className={`bi bi-trash btn-icon`}></i>
             </button>
           ) : (

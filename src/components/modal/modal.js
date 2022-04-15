@@ -10,7 +10,7 @@ export const Modal = ({ setModal, video }) => {
   const {
     auth: { token },
   } = useAuth();
-  const { playlistName, setPlaylistName, setPlaylist } = usePlaylist();
+  const { playlist, setPlaylist } = usePlaylist();
   const [title, setTitle] = useState("");
 
   const header = { authorization: token };
@@ -28,7 +28,7 @@ export const Modal = ({ setModal, video }) => {
           headers: header,
         }
       );
-      setPlaylistName(response.data.playlists);
+      setPlaylist(response.data.playlists);
       setCreatePlaylist(false);
     } catch (e) {
       console.log(e.message);
@@ -45,6 +45,7 @@ export const Modal = ({ setModal, video }) => {
         headers: header,
       });
       setPlaylist(response.data.playlists);
+      console.log(response.data.playlists);
     } catch (error) {
       console.log(error);
     }
@@ -61,8 +62,8 @@ export const Modal = ({ setModal, video }) => {
           </button>
         </div>
         <div className="modal-contant">
-          {playlistName.length > 0 &&
-            playlistName.map((playlist) => (
+          {playlist.length > 0 &&
+            playlist.map((playlist) => (
               <label key={playlist._id}>
                 <input
                   type="checkbox"

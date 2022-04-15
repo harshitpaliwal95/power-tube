@@ -18,6 +18,7 @@ export const Playlist = () => {
         headers: header,
       });
       setPlaylist(response.data.playlists);
+      console.log(response.data.playlists)
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +38,7 @@ export const Playlist = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          {playlist.length === 0 && <PagePlaceHolder />}
+          {playlist.length <= 0 && <PagePlaceHolder />}
           <div className="grid-three">
             {playlist.map((playlist) => (
               <NewPlaylist key={playlist._id} playlist={playlist} />
