@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Navbar, Sidebar, Card, Chips, chipsData } from "../../components";
+import {
+  Navbar,
+  Sidebar,
+  Card,
+  Chips,
+  chipsData,
+  Loader,
+} from "../../components";
 
 import axios from "axios";
 import { useExplore } from "../../context/exploreContext";
@@ -30,9 +37,11 @@ export const Explore = () => {
         <Sidebar />
         <main className="main-product">
           <div className="chip-container">
-            {chipsData.map((item) => (
-              <Chips key={item.chipName} data={item} />
-            ))}
+            {videos.length === 0 ? (
+              <Loader />
+            ) : (
+              chipsData.map((item) => <Chips key={item.chipName} data={item} />)
+            )}
           </div>
 
           <div className="grid-three">
