@@ -37,7 +37,7 @@ export const Playlist = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          {playlist.length === 0 && <PagePlaceHolder />}
+          {playlist.length <= 0 && <PagePlaceHolder />}
           <div className="grid-three">
             {playlist.map((playlist) => (
               <NewPlaylist key={playlist._id} playlist={playlist} />
