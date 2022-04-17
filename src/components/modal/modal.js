@@ -45,7 +45,6 @@ export const Modal = ({ setModal, video }) => {
         headers: header,
       });
       setPlaylist(response.data.playlists);
-      console.log(response.data.playlists);
     } catch (error) {
       console.log(error);
     }

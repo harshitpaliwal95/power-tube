@@ -58,7 +58,6 @@ export const Card = ({ video }) => {
     try {
       const response = await axios.delete(deleteLink, { headers: header });
       setPlaylist(response.data.playlists);
-      console.log(response.data.playlists);
     } catch (error) {
       console.log(error);
     }

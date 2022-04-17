@@ -6,9 +6,9 @@ import "./auth.css";
 import axios from "axios";
 import { useAuth } from "../../context/authContext";
 export function Login() {
-  const [email, setEmail] = useState("adarshbalika@gmail.com");
+  const [email, setEmail] = useState("");
 
-  const [password, setPassword] = useState("adarshBalika123");
+  const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState("password");
 
@@ -56,6 +56,7 @@ export function Login() {
                 <input
                   type="email"
                   name="email"
+                  value={email}
                   placeholder="demo@yahoo.com"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -65,6 +66,7 @@ export function Login() {
                 <input
                   type={showPassword}
                   name="password"
+                  value={password}
                   placeholder="*******"
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -103,7 +105,8 @@ export function Login() {
                 <button
                   className="btn btn-outline guest-btn"
                   onClick={() => {
-                    logInHandler();
+                    setEmail("user@gmail.com");
+                    setPassword("123456");
                   }}
                 >
                   Log In As Guest

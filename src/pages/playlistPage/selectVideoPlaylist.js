@@ -1,7 +1,6 @@
 import { Navbar, Sidebar, Card } from "../../components";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAuth, usePlaylist } from "../../context";
+import { usePlaylist } from "../../context";
 
 export const SelectVideoPlaylist = () => {
   const { playlist } = usePlaylist();
