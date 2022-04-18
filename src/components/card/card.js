@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { ACTION } from "../../action/action";
 import { useVideoGlobal, useAuth, usePlaylist } from "../../context";
 import { findItem } from "../../utils/findItem";
 import { Modal } from "../modal/modal";
 import "./card.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { LikeVideoApi } from "../../axiosAPI's/likeVideo/liveVideoApi";
 
 export const Card = ({ video }) => {
   const { setPlaylist } = usePlaylist();
@@ -17,41 +17,33 @@ export const Card = ({ video }) => {
   const header = { authorization: token };
 
   const { title, anime, _id } = video;
-  const {
-    globalState: { likeVideo, watchLater },
-    globalDispatch,
-  } = useVideoGlobal();
+  const { likeVideo, watchLater } = useVideoGlobal();
 
   const [modal, setModal] = useState(false);
   const isVideoInLiked = findItem(likeVideo, _id);
   const isVideoInWatchLater = findItem(watchLater, _id);
 
+  const likeApi = LikeVideoApi();
   const likedVideoHandler = (data) => {
     if (isVideoInLiked) {
-      globalDispatch({
-        type: ACTION.REMOVE_FORM_LIKED_VIDEO,
-        payload: data._id,
-      });
+      likeApi.likeVideoDelete(data);
     } else {
-      globalDispatch({
-        type: ACTION.ADD_TO_LIKED_VIDEO,
-        payload: data,
-      });
+      likeApi.likeVideoPost(data);
     }
   };
-  const watchLaterHandler = (data) => {
-    if (isVideoInWatchLater) {
-      globalDispatch({
-        type: ACTION.REMOVE_FORM_WATCH_LATER,
-        payload: data._id,
-      });
-    } else {
-      globalDispatch({
-        type: ACTION.ADD_TO_WATCH_LATER,
-        payload: data,
-      });
-    }
-  };
+  // const watchLaterHandler = (data) => {
+  //   if (isVideoInWatchLater) {
+  //     globalDispatch({
+  //       type: ACTION.REMOVE_FORM_WATCH_LATER,
+  //       payload: data._id,
+  //     });
+  //   } else {
+  //     globalDispatch({
+  //       type: ACTION.ADD_TO_WATCH_LATER,
+  //       payload: data,
+  //     });
+  //   }
+  // };
 
   const deleteFromPlaylist = async (playlistId, videoId) => {
     const deleteLink = `/api/user/playlists/${playlistId}/${videoId}`;
@@ -86,7 +78,7 @@ export const Card = ({ video }) => {
               } btn-icon`}
             ></i>
           </button>
-          <button onClick={() => watchLaterHandler(video)}>
+          <button onClick={() => ""}>
             <i
               className={`bi bi-bookmarks${
                 isVideoInWatchLater ? "-fill" : ""
