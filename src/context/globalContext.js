@@ -1,18 +1,22 @@
-import { createContext, useContext, useReducer, useState } from "react";
-import { globalReducer } from "../reducer";
+import { createContext, useContext, useState } from "react";
 
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
   const [modal, setModal] = useState(false);
-  const [globalState, globalDispatch] = useReducer(globalReducer, {
-    likeVideo: [],
-    watchLater: [],
-  });
+  const [likeVideo, setLikeVideo] = useState([]);
+  const [watchLater, setWatchLater] = useState([]);
 
   return (
     <GlobalContext.Provider
-      value={{ globalState, globalDispatch, modal, setModal }}
+      value={{
+        modal,
+        setModal,
+        likeVideo,
+        setLikeVideo,
+        watchLater,
+        setWatchLater,
+      }}
     >
       {children}
     </GlobalContext.Provider>

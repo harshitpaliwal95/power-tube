@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { ACTION } from "../../action/action";
 import { useVideoGlobal, useAuth, usePlaylist } from "../../context";
 import { findItem } from "../../utils/findItem";
 import { Modal } from "../modal/modal";
 import "./card.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { LikeVideoApi, WatchLaterApi } from "../../axiosAPI's";
 
 export const Card = ({ video }) => {
   const { setPlaylist } = usePlaylist();
@@ -17,39 +17,27 @@ export const Card = ({ video }) => {
   const header = { authorization: token };
 
   const { title, anime, _id } = video;
-  const {
-    globalState: { likeVideo, watchLater },
-    globalDispatch,
-  } = useVideoGlobal();
+  const { likeVideo, watchLater } = useVideoGlobal();
 
   const [modal, setModal] = useState(false);
   const isVideoInLiked = findItem(likeVideo, _id);
   const isVideoInWatchLater = findItem(watchLater, _id);
 
+  const likeApi = LikeVideoApi();
+  const watchlaterApi = WatchLaterApi();
   const likedVideoHandler = (data) => {
-    if (isVideoInLiked) {
-      globalDispatch({
-        type: ACTION.REMOVE_FORM_LIKED_VIDEO,
-        payload: data._id,
-      });
+    if (!isVideoInLiked) {
+      likeApi.likeVideoPost(data);
     } else {
-      globalDispatch({
-        type: ACTION.ADD_TO_LIKED_VIDEO,
-        payload: data,
-      });
+      likeApi.likeVideoDelete(data);
     }
   };
+
   const watchLaterHandler = (data) => {
-    if (isVideoInWatchLater) {
-      globalDispatch({
-        type: ACTION.REMOVE_FORM_WATCH_LATER,
-        payload: data._id,
-      });
+    if (!isVideoInWatchLater) {
+      watchlaterApi.watchLaterPost(data);
     } else {
-      globalDispatch({
-        type: ACTION.ADD_TO_WATCH_LATER,
-        payload: data,
-      });
+      watchlaterApi.watchLaterDelete(data);
     }
   };
 

@@ -59,3 +59,8 @@ input {
     width: 60%;
   }
 }
+@media only screen and (max-width: 600px) {
+  .modal-box {
+    top: calc(-75vh + 50%);
+  }
+}
