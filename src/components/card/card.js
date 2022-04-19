@@ -5,7 +5,7 @@ import { Modal } from "../modal/modal";
 import "./card.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { LikeVideoApi } from "../../axiosAPI's/likeVideo/liveVideoApi";
+import { LikeVideoApi, WatchLaterApi } from "../../axiosAPI's";
 
 export const Card = ({ video }) => {
   const { setPlaylist } = usePlaylist();
@@ -24,26 +24,22 @@ export const Card = ({ video }) => {
   const isVideoInWatchLater = findItem(watchLater, _id);
 
   const likeApi = LikeVideoApi();
+  const watchlaterApi = WatchLaterApi();
   const likedVideoHandler = (data) => {
-    if (isVideoInLiked) {
-      likeApi.likeVideoDelete(data);
-    } else {
+    if (!isVideoInLiked) {
       likeApi.likeVideoPost(data);
+    } else {
+      likeApi.likeVideoDelete(data);
     }
   };
-  // const watchLaterHandler = (data) => {
-  //   if (isVideoInWatchLater) {
-  //     globalDispatch({
-  //       type: ACTION.REMOVE_FORM_WATCH_LATER,
-  //       payload: data._id,
-  //     });
-  //   } else {
-  //     globalDispatch({
-  //       type: ACTION.ADD_TO_WATCH_LATER,
-  //       payload: data,
-  //     });
-  //   }
-  // };
+
+  const watchLaterHandler = (data) => {
+    if (!isVideoInWatchLater) {
+      watchlaterApi.watchLaterPost(data);
+    } else {
+      watchlaterApi.watchLaterDelete(data);
+    }
+  };
 
   const deleteFromPlaylist = async (playlistId, videoId) => {
     const deleteLink = `/api/user/playlists/${playlistId}/${videoId}`;
@@ -78,7 +74,7 @@ export const Card = ({ video }) => {
               } btn-icon`}
             ></i>
           </button>
-          <button onClick={() => ""}>
+          <button onClick={() => watchLaterHandler(video)}>
             <i
               className={`bi bi-bookmarks${
                 isVideoInWatchLater ? "-fill" : ""

@@ -5,7 +5,7 @@ const GlobalContext = createContext();
 const GlobalProvider = ({ children }) => {
   const [modal, setModal] = useState(false);
   const [likeVideo, setLikeVideo] = useState([]);
-  const [watchLater, setWatchlater] = useState([]);
+  const [watchLater, setWatchLater] = useState([]);
 
   return (
     <GlobalContext.Provider
@@ -15,7 +15,7 @@ const GlobalProvider = ({ children }) => {
         likeVideo,
         setLikeVideo,
         watchLater,
-        setWatchlater,
+        setWatchLater,
       }}
     >
       {children}
