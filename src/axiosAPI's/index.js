@@ -1,2 +1,2 @@
-export { LikeVideoApi } from "./likeVideo/liveVideoApi";
+export { LikeVideoApi } from "./likeVideo/likeVideoApi";
 export { WatchLaterApi } from "./watchLater/watchLaterApi";
