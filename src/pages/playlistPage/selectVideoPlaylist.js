@@ -1,4 +1,4 @@
-import { Navbar, Sidebar, Card } from "../../components";
+import { Sidebar, Card } from "../../components";
 import { useParams } from "react-router-dom";
 import { usePlaylist } from "../../context";
 
@@ -10,7 +10,6 @@ export const SelectVideoPlaylist = () => {
 
   return (
     <div>
-      <Navbar />
       <section className="main-box">
         <Sidebar />
         <main className="main-product">

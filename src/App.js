@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Mockman from "mockman-js";
 import {
   Explore,
@@ -11,9 +12,12 @@ import {
   WatchLater,
 } from "./pages";
 import { SelectVideoPlaylist } from "./pages/playlistPage/selectVideoPlaylist";
+import { Navbar } from "./components";
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mockman" element={<Mockman />} />

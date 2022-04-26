@@ -1,4 +1,4 @@
-import { Navbar, Sidebar, PagePlaceHolder } from "../../components";
+import { Sidebar, PagePlaceHolder } from "../../components";
 import { NewPlaylist } from "./components/newPlatlist";
 import { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
@@ -33,7 +33,6 @@ export const Playlist = () => {
 
   return (
     <div>
-      <Navbar />
       <section className="main-box">
         <Sidebar />
         <main className="main-product">

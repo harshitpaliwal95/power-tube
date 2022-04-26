@@ -65,10 +65,6 @@ const Navbar = () => {
           </div>
           <div className="right-nav">
             <div>
-              <button className="btn-icon">
-                <i className="bi bi-person-fill"></i>
-              </button>
-
               <button className="btn-icon burger">
                 <i className="bi bi-list"></i>
               </button>

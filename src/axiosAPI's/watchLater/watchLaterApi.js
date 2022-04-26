@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useAuth, useVideoGlobal } from "../../context";
 
 export const WatchLaterApi = () => {
@@ -19,6 +20,7 @@ export const WatchLaterApi = () => {
       setWatchLater(response.data.watchlater);
     } catch (error) {
       console.log(error);
+      toast.error("Please login first!");
     }
   };
   const watchLaterDelete = async (video) => {

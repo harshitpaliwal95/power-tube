@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar } from "../../components";
+
 import { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
 
@@ -36,9 +36,7 @@ export function SignUp() {
 
   return (
     <div>
-      <Navbar />
       <main>
-        <ToastContainer />
         <div className="form-container">
           <div className="form-info">
             <p className="heading-x-lg text-center">Join-us</p>

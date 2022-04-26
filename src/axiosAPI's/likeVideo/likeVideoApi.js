@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useAuth, useVideoGlobal } from "../../context";
 
 export const LikeVideoApi = () => {
@@ -19,6 +20,7 @@ export const LikeVideoApi = () => {
       setLikeVideo(res.data.likes);
     } catch (error) {
       console.log(error);
+      toast.error("Please login first!");
     }
   };
   const likeVideoDelete = async (video) => {

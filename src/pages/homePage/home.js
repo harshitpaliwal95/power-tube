@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Navbar, Sidebar, Card, Loader } from "../../components";
+import { Sidebar, Card, Loader } from "../../components";
 import axios from "axios";
 import "./home.css";
 
@@ -19,7 +19,6 @@ export const Home = () => {
 
   return (
     <div>
-      <Navbar />
       <section className="main-box">
         <Sidebar />
         <main className="main-product">

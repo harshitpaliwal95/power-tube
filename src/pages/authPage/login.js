@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar } from "../../components";
+
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "./auth.css";
 import axios from "axios";
 import { useAuth } from "../../context/authContext";
@@ -44,9 +44,7 @@ export function Login() {
 
   return (
     <div>
-      <Navbar />
       <main>
-        <ToastContainer />
         <div className="form-container">
           <div className="form-info">
             <p className="heading-x-lg text-center">Login</p>
