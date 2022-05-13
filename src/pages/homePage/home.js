@@ -18,21 +18,19 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
-      <section className="main-box">
-        <Sidebar />
-        <main className="main-product">
-          {videos.length === 0 ? (
-            <Loader />
-          ) : (
-            <div className="grid-three">
-              {videos.slice(0, 7).map((video) => (
-                <Card key={video._id} video={video} />
-              ))}
-            </div>
-          )}
-        </main>
-      </section>
-    </div>
+    <main className="main-box">
+      <Sidebar />
+      <div className="main-product">
+        {videos.length === 0 ? (
+          <Loader />
+        ) : (
+          <div className="grid-three">
+            {videos.slice(0, 7).map((video) => (
+              <Card key={video._id} video={video} />
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
   );
 };

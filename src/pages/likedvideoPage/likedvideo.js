@@ -2,7 +2,9 @@ import { Card, PagePlaceHolder, Sidebar } from "../../components";
 import { useVideoGlobal } from "../../context/globalContext";
 
 export const LikedVideo = () => {
-  const { likeVideo } = useVideoGlobal();
+  const {
+    state:{likeVideo},
+  } = useVideoGlobal();
 
   return (
     <div>

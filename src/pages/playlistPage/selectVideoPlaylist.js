@@ -8,6 +8,7 @@ export const SelectVideoPlaylist = () => {
   const { id } = useParams();
   const getVideos = playlist.find((item) => item._id === id);
 
+
   return (
     <div>
       <section className="main-box">

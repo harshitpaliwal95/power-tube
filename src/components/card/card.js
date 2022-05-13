@@ -17,7 +17,7 @@ export const Card = ({ video }) => {
   const header = { authorization: token };
 
   const { title, anime, _id } = video;
-  const { likeVideo, watchLater } = useVideoGlobal();
+  const { state:{likeVideo,watchLater} } = useVideoGlobal();
 
   const [modal, setModal] = useState(false);
   const isVideoInLiked = findItem(likeVideo, _id);

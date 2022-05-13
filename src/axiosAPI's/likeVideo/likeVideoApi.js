@@ -7,8 +7,9 @@ export const LikeVideoApi = () => {
     auth: { token },
   } = useAuth();
 
-  const { setLikeVideo } = useVideoGlobal();
+  const { state, dispatch } = useVideoGlobal();
   const header = { authorization: token };
+
 
   const likeVideoPost = async (video) => {
     try {
@@ -17,7 +18,7 @@ export const LikeVideoApi = () => {
         { video: video },
         { headers: header }
       );
-      setLikeVideo(res.data.likes);
+      dispatch({ type: "LIKE_VIDEO", payload: res.data.likes });
     } catch (error) {
       console.log(error);
       toast.error("Please login first!");
@@ -28,7 +29,7 @@ export const LikeVideoApi = () => {
       const res = await axios.delete("/api/user/likes/" + video._id, {
         headers: header,
       });
-      setLikeVideo(res.data.likes);
+      dispatch({ type: "LIKE_VIDEO", payload: res.data.likes });
     } catch (error) {
       console.log(error);
     }

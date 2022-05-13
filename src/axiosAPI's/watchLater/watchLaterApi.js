@@ -7,7 +7,7 @@ export const WatchLaterApi = () => {
     auth: { token },
   } = useAuth();
 
-  const { setWatchLater } = useVideoGlobal();
+  const { dispatch } = useVideoGlobal();
   const header = { authorization: token };
 
   const watchLaterPost = async (video) => {
@@ -17,7 +17,8 @@ export const WatchLaterApi = () => {
         { video: video },
         { headers: header }
       );
-      setWatchLater(response.data.watchlater);
+     
+      dispatch({type:'WATCH_LATER',payload:response.data.watchlater})
     } catch (error) {
       console.log(error);
       toast.error("Please login first!");
@@ -28,8 +29,7 @@ export const WatchLaterApi = () => {
       const response = await axios.delete("/api/user/watchlater/" + video._id, {
         headers: header,
       });
-
-      setWatchLater(response.data.watchlater);
+      dispatch({type:'WATCH_LATER',payload:response.data.watchlater})
     } catch (error) {
       console.log(error);
     }

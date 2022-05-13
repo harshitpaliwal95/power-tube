@@ -2,7 +2,9 @@ import { Card, PagePlaceHolder, Sidebar } from "../../components";
 import { useVideoGlobal } from "../../context/globalContext";
 
 export const WatchLater = () => {
-  const { watchLater } = useVideoGlobal();
+  const {
+    state: { watchLater },
+  } = useVideoGlobal();
 
   return (
     <div>

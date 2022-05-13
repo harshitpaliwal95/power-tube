@@ -9,6 +9,7 @@ import {
   Login,
   Playlist,
   SignUp,
+  SingleVideoPage,
   WatchLater,
 } from "./pages";
 import { SelectVideoPlaylist } from "./pages/playlistPage/selectVideoPlaylist";
@@ -28,6 +29,7 @@ function App() {
         <Route path="/liked" element={<LikedVideo />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/playlist/:id" element={<SelectVideoPlaylist />} />
+        <Route path="/video" element={<SingleVideoPage />} />
       </Routes>
     </div>
   );
