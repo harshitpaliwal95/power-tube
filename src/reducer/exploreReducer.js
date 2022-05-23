@@ -2,6 +2,11 @@ import { ACTION } from "../action/action";
 
 const exploreReducer = (state, { type, payload }) => {
   switch (type) {
+    case "ALL_VIDEO":
+      return {
+        ...state,
+        explore: payload,
+      };
     case ACTION.FILTER:
       return {
         ...state,

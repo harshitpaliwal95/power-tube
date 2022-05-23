@@ -4,6 +4,13 @@
 }
 @media only screen and (max-width: 600px) {
   .side-bar {
+    position: absolute;
+    background-color: black;
+    z-index: 1200;
+    width: 100%;
+    padding: 2rem;
+    height: 100vh;
+    transition: 0.8s;
     display: none;
   }
 }

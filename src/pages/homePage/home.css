@@ -25,9 +25,6 @@
   .grid-three {
     gap: 1rem 0.4rem;
   }
-  .side-bar {
-    display: none;
-  }
 }
 @media only screen and (max-width: 1100px) {
   .grid-three {

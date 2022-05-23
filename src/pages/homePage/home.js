@@ -1,20 +1,20 @@
 import { React, useEffect, useState } from "react";
-import { Navbar, Sidebar, Card } from "../../components";
+import { Sidebar, Card, Loader } from "../../components";
 import axios from "axios";
-
 import "./home.css";
+import { useExplore } from "../../context";
 
 export const Home = () => {
-  const [videos, setVideos] = useState([]);
-  const [loader, setLoader] = useState(false);
+  const {
+    exploreState: { explore },
+    exploreDispatch,
+  } = useExplore();
 
   useEffect(() => {
     (async () => {
       try {
-        setLoader(true);
         const response = await axios.get("/api/videos");
-        setVideos(response.data.videos);
-        setLoader(false);
+        exploreDispatch({ type: "ALL_VIDEO", payload: response.data.videos });
       } catch (e) {
         console.log(e.message);
       }
@@ -22,19 +22,19 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
-      <Navbar />
-      <section className="main-box">
-        <Sidebar />
-        <main className="main-product">
-          {loader && <div className="heading-lg">....loading</div>}
+    <main className="main-box">
+      <Sidebar />
+      <div className="main-product">
+        {explore.length === 0 ? (
+          <Loader />
+        ) : (
           <div className="grid-three">
-            {videos.slice(0, 7).map((video) => (
+            {explore.slice(0, 7).map((video) => (
               <Card key={video._id} video={video} />
             ))}
           </div>
-        </main>
-      </section>
-    </div>
+        )}
+      </div>
+    </main>
   );
 };

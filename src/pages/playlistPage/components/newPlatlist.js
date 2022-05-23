@@ -17,7 +17,6 @@ export const NewPlaylist = ({ playlist }) => {
     const deleteLink = "/api/user/playlists/" + id;
     try {
       const response = await axios.delete(deleteLink, { headers: header });
-      console.log(response.data.playlists);
       setPlaylist(response.data.playlists);
     } catch (error) {
       console.log(error);

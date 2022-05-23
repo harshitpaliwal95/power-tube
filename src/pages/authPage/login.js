@@ -1,13 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar } from "../../components";
+
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "./auth.css";
 import axios from "axios";
 import { useAuth } from "../../context/authContext";
 export function Login() {
-  const [email, setEmail] = useState("adarshbalika@gmail.com");
-  const [password, setPassword] = useState("adarshBalika123");
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const [showPassword, setShowPassword] = useState("password");
 
   const { setAuth } = useAuth();
 
@@ -41,9 +44,7 @@ export function Login() {
 
   return (
     <div>
-      <Navbar />
       <main>
-        <ToastContainer />
         <div className="form-container">
           <div className="form-info">
             <p className="heading-x-lg text-center">Login</p>
@@ -51,7 +52,9 @@ export function Login() {
               <div className="input-box">
                 <label className="text-medium">Email Address</label>
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
+                  value={email}
                   placeholder="demo@yahoo.com"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -59,10 +62,26 @@ export function Login() {
               <div className="input-box">
                 <label className="text-medium">Password</label>
                 <input
-                  type="text"
+                  type={showPassword}
+                  name="password"
+                  value={password}
                   placeholder="*******"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  className="btn-icon"
+                  onClick={() =>
+                    setShowPassword(
+                      showPassword === "password" ? "text" : "password"
+                    )
+                  }
+                >
+                  <i
+                    className={`bi bi-eye${
+                      showPassword === "password" ? "" : "-slash"
+                    }`}
+                  ></i>
+                </button>
               </div>
               <div className="space-between forget-pass">
                 <span>
@@ -84,7 +103,8 @@ export function Login() {
                 <button
                   className="btn btn-outline guest-btn"
                   onClick={() => {
-                    logInHandler();
+                    setEmail("user@gmail.com");
+                    setPassword("123456");
                   }}
                 >
                   Log In As Guest

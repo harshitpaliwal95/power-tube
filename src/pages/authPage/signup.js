@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar } from "../../components";
+
 import { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
 
@@ -10,6 +10,7 @@ export function SignUp() {
   const [name, setName] = useState("harshit");
   const [email, setEmail] = useState("harshit@gmail.com");
   const [password, setPassword] = useState("1234");
+  const [showPassword, setShowPassword] = useState("password");
 
   const navigate = useNavigate();
 
@@ -35,9 +36,7 @@ export function SignUp() {
 
   return (
     <div>
-      <Navbar />
       <main>
-        <ToastContainer />
         <div className="form-container">
           <div className="form-info">
             <p className="heading-x-lg text-center">Join-us</p>
@@ -63,11 +62,25 @@ export function SignUp() {
               <div className="input-box">
                 <label className="text-medium">Password</label>
                 <input
-                  type="password"
+                  type={showPassword}
                   name="password"
                   placeholder="*******"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  className="btn-icon"
+                  onClick={() =>
+                    setShowPassword(
+                      showPassword === "password" ? "text" : "password"
+                    )
+                  }
+                >
+                  <i
+                    className={`bi bi-eye${
+                      showPassword === "password" ? "" : "-slash"
+                    }`}
+                  ></i>
+                </button>
               </div>
               <div className="space-between forget-pass">
                 <span>
