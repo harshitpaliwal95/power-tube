@@ -2,15 +2,19 @@ import { React, useEffect, useState } from "react";
 import { Sidebar, Card, Loader } from "../../components";
 import axios from "axios";
 import "./home.css";
+import { useExplore } from "../../context";
 
 export const Home = () => {
-  const [videos, setVideos] = useState([]);
+  const {
+    exploreState: { explore },
+    exploreDispatch,
+  } = useExplore();
 
   useEffect(() => {
     (async () => {
       try {
         const response = await axios.get("/api/videos");
-        setVideos(response.data.videos);
+        exploreDispatch({ type: "ALL_VIDEO", payload: response.data.videos });
       } catch (e) {
         console.log(e.message);
       }
@@ -21,11 +25,11 @@ export const Home = () => {
     <main className="main-box">
       <Sidebar />
       <div className="main-product">
-        {videos.length === 0 ? (
+        {explore.length === 0 ? (
           <Loader />
         ) : (
           <div className="grid-three">
-            {videos.slice(0, 7).map((video) => (
+            {explore.slice(0, 7).map((video) => (
               <Card key={video._id} video={video} />
             ))}
           </div>

@@ -28,7 +28,6 @@ export const Explore = () => {
     })();
   }, []);
 
-
   const defaultState = [...explore];
   const categoryVideos = setCategory(defaultState, category);
 

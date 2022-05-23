@@ -11,5 +11,6 @@
     padding: 2rem;
     height: 100vh;
     transition: 0.8s;
+    display: none;
   }
 }
