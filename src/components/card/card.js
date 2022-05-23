@@ -1,5 +1,5 @@
 import "./card.css";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ActionButton } from "../actionButton.js/actionButton";
 
 export const Card = ({ video }) => {
@@ -13,7 +13,7 @@ export const Card = ({ video }) => {
       <div className="card-comp-img">
         <img
           className="card-top-img"
-          onClick={() => navigate(`video/${_id}`)}
+          onClick={() => navigate(`/video/${_id}`)}
           src={`https://i.ytimg.com/vi/${_id}/hqdefault.jpg`}
           alt="loading"
         />

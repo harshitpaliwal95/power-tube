@@ -52,7 +52,7 @@ export const ActionButton = ({ playlistId, videoId, video }) => {
           } btn-icon`}
         ></i>
       </button>
-      {id ? (
+      {id && playlistId ? (
         <button onClick={() => deleteFromPlaylist(playlistId, videoId)}>
           <i className={`bi bi-trash btn-icon`}></i>
         </button>

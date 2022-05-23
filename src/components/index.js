@@ -6,3 +6,4 @@ export { chipsData } from "./filterChips/chipsData";
 export { PagePlaceHolder } from "./emptyMessage/pagePlaceHolder";
 export { Modal } from "./modal/modal";
 export { Loader } from "./loader/loader";
+export { ActionButton } from "./actionButton.js/actionButton";
