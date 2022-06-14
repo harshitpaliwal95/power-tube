@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { Sidebar, ActionButton } from "../../components";
-
 import "./singleVideoPage.css";
-import { useExplore } from "../../context";
+import { useAuth, useExplore } from "../../context";
+import { useEffect } from "react";
+import { addTohistory } from "../../service";
 
 export const SingleVideoPage = () => {
   const { id } = useParams();
@@ -12,6 +13,15 @@ export const SingleVideoPage = () => {
   } = useExplore();
 
   const video = explore.find((data) => data._id === id);
+
+  const {
+    auth: { token },
+  } = useAuth();
+  const header = { authorization: token };
+
+  useEffect(() => {
+    addTohistory(video, header);
+  }, [video]);
 
   return (
     <main className="main-box">

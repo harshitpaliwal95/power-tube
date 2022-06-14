@@ -1,4 +1,4 @@
-import { LikeVideoApi, WatchLaterApi } from "../axiosAPI's";
+import { LikeVideoApi, WatchLaterApi } from "../service";
 
 export const ClickHandler = () => {
   const { likeVideoPost, likeVideoDelete } = LikeVideoApi();
