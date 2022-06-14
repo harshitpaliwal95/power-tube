@@ -28,7 +28,7 @@ export const NewPlaylist = ({ playlist }) => {
     <div className="card-component create-playlist">
       <img
         className="card-top-img"
-        src="https://i.ytimg.com/vi/EK5Ua8qOLuo/hqdefault.jpg"
+        src="https://i.ytimg.com/vi/8p3VpzhWLsQ/hqdefault.jpg"
         alt="loading"
         onClick={() => navigate(`/playlist/${playlist._id}`)}
       />

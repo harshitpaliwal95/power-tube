@@ -3,7 +3,7 @@ import { useVideoGlobal } from "../../context/globalContext";
 
 export const LikedVideo = () => {
   const {
-    state:{likeVideo},
+    state: { likeVideo },
   } = useVideoGlobal();
 
   return (
@@ -11,7 +11,12 @@ export const LikedVideo = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          {likeVideo.length === 0 && <PagePlaceHolder />}
+          {likeVideo.length === 0 && (
+            <>
+              <p className="main-heading">No Liked Videos</p>
+              <i className="bi bi-x-lg empty-icon"></i>
+            </>
+          )}
           <div className="grid-three">
             {likeVideo.map((video) => (
               <Card key={video._id} video={video} />

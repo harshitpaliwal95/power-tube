@@ -5,7 +5,7 @@ import axios from "axios";
 import { ClickHandler } from "../../utils/clickHandler";
 import { Modal } from "../modal/modal";
 import { useState } from "react";
-import { deleteVideoFromHistory } from "../../service/history/history";
+import { HistoryApi } from "../../service/history/history";
 import { toast } from "react-toastify";
 
 export const ActionButton = ({ playlistId, videoId, video }) => {
@@ -39,16 +39,7 @@ export const ActionButton = ({ playlistId, videoId, video }) => {
     }
   };
 
-  const deleteVideoHistory = async () => {
-    try {
-      const {
-        data: { history },
-      } = await deleteVideoFromHistory(videoId, header);
-      dispatch({ type: "HISTORY", payload: history });
-    } catch (error) {
-      toast.info("Something went wrong");
-    }
-  };
+  const { deleteVideoFromHistory } = HistoryApi();
 
   let { pathname } = useLocation();
 
@@ -84,7 +75,7 @@ export const ActionButton = ({ playlistId, videoId, video }) => {
         </>
       )}
       {pathname === "/history" && (
-        <button onClick={() => deleteVideoHistory()}>
+        <button onClick={() => deleteVideoFromHistory(videoId)}>
           <i className={`bi bi-trash btn-icon`}></i>
         </button>
       )}

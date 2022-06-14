@@ -47,6 +47,19 @@ export const HistoryApi = () => {
     }
   };
 
+  const deleteVideoFromHistory = async (videoId) => {
+    try {
+      const {
+        data: { history },
+      } = await axios.delete(`/api/user/history/${videoId}`, {
+        headers: header,
+      });
+      dispatch({ type: "HISTORY", payload: history });
+    } catch (error) {
+      toast.info("Something went wrong");
+    }
+  };
+
   const clearAllHistory = async () => {
     try {
       const {
@@ -60,5 +73,5 @@ export const HistoryApi = () => {
     }
   };
 
-  return { clearAllHistory, addToHistory };
+  return { clearAllHistory, addToHistory, deleteVideoFromHistory };
 };

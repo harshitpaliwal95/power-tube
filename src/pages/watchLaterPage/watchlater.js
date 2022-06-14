@@ -11,7 +11,12 @@ export const WatchLater = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          {watchLater.length === 0 && <PagePlaceHolder />}
+          {watchLater.length === 0 && (
+            <>
+              <p className="main-heading">No WatchLater</p>
+              <i className="bi bi-x-lg empty-icon"></i>
+            </>
+          )}
           <div className="grid-three">
             {watchLater.map((video) => (
               <Card key={video._id} video={video} />

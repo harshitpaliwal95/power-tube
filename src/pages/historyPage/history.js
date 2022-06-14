@@ -16,10 +16,17 @@ export const History = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          <button className="btn" onClick={clearAllHistory}>
-            Clear All History
-          </button>
-          {history.length === 0 && <PagePlaceHolder />}
+          {!history && (
+            <button className="btn" onClick={clearAllHistory}>
+              Clear All History
+            </button>
+          )}
+          {history.length === 0 && (
+            <>
+              <p className="main-heading">No history</p>
+              <i className="bi bi-x-lg empty-icon"></i>
+            </>
+          )}
           <div className="grid-three">
             {history.map((video) => (
               <Card key={video._id} video={video} />

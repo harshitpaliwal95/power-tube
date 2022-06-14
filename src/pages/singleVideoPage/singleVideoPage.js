@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import { Sidebar, ActionButton } from "../../components";
 import "./singleVideoPage.css";
-import { useAuth, useExplore } from "../../context";
+import { useExplore } from "../../context";
 import { useEffect } from "react";
 import { HistoryApi } from "../../service";
+import { findItem } from "../../utils/findItem";
 
 export const SingleVideoPage = () => {
   const { id } = useParams();
@@ -12,11 +13,7 @@ export const SingleVideoPage = () => {
     exploreState: { explore },
   } = useExplore();
 
-  const video = explore.find((data) => data._id === id);
-
-  const {
-    auth: { token },
-  } = useAuth();
+  const video = findItem(explore, id);
 
   const { addToHistory } = HistoryApi();
 
