@@ -5,6 +5,7 @@ import { useAuth, useExplore, useVideoGlobal } from "../../context";
 import { useEffect } from "react";
 import { addTohistory } from "../../service";
 import { findItem } from "../../utils/findItem";
+import { toast } from "react-toastify";
 
 export const SingleVideoPage = () => {
   const { id } = useParams();
@@ -26,10 +27,14 @@ export const SingleVideoPage = () => {
     const inHistory = findItem(state.history, video._id);
 
     if (!inHistory) {
-      const {
-        data: { history },
-      } = await addTohistory(video, header);
-      dispatch({ type: "HISTORY", payload: history });
+      try {
+        const {
+          data: { history },
+        } = await addTohistory(video, header);
+        dispatch({ type: "HISTORY", payload: history });
+      } catch (error) {
+        toast.info("Something went wrong");
+      }
     }
   };
 

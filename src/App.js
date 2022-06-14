@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Mockman from "mockman-js";
 import {
   Explore,
+  History,
   Home,
   LikedVideo,
   Login,
@@ -54,6 +55,14 @@ function App() {
           element={
             <ProtectedRoute>
               <WatchLater />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <ProtectedRoute>
+              <History />
             </ProtectedRoute>
           }
         />
