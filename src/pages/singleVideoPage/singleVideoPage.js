@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
 import { Sidebar, ActionButton } from "../../components";
 import "./singleVideoPage.css";
-import { useAuth, useExplore, useVideoGlobal } from "../../context";
+import { useAuth, useExplore } from "../../context";
 import { useEffect } from "react";
-import { addTohistory } from "../../service";
-import { findItem } from "../../utils/findItem";
-import { toast } from "react-toastify";
+import { HistoryApi } from "../../service";
 
 export const SingleVideoPage = () => {
   const { id } = useParams();
@@ -20,26 +18,10 @@ export const SingleVideoPage = () => {
     auth: { token },
   } = useAuth();
 
-  const { state, dispatch } = useVideoGlobal();
-  const header = { authorization: token };
-
-  const historyHandler = async () => {
-    const inHistory = findItem(state.history, video._id);
-
-    if (!inHistory) {
-      try {
-        const {
-          data: { history },
-        } = await addTohistory(video, header);
-        dispatch({ type: "HISTORY", payload: history });
-      } catch (error) {
-        toast.info("Something went wrong");
-      }
-    }
-  };
+  const { addToHistory } = HistoryApi();
 
   useEffect(() => {
-    historyHandler();
+    addToHistory(video);
   }, [video]);
 
   return (
