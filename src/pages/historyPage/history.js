@@ -1,8 +1,6 @@
-import { toast } from "react-toastify";
-import { Card, PagePlaceHolder, Sidebar } from "../../components";
-import { useAuth } from "../../context";
+import { Card, Sidebar } from "../../components";
 import { useVideoGlobal } from "../../context/globalContext";
-import { deleteAllHistory, HistoryApi } from "../../service/history/history";
+import { HistoryApi } from "../../service/history/history";
 
 export const History = () => {
   const {

@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 export const ActionButton = ({ playlistId, videoId, video }) => {
   const {
     state: { likeVideo, watchLater },
-    dispatch,
   } = useVideoGlobal();
   const { setPlaylist } = usePlaylist();
 

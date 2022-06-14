@@ -16,6 +16,30 @@ input {
 .search-navbar input {
   width: 14rem;
 }
+.drop-box {
+  position: absolute;
+  color: inherit;
+  top: -111px;
+  right: 6px;
+  border-left: 1px solid gray;
+  transition: 0.4s ease-in-out;
+}
+.drop-box p {
+  cursor: pointer;
+}
+.drop-box p:hover {
+  background-color: rgba(255, 255, 255, 0.13);
+}
+.btn-icon {
+  color: white;
+}
+.show-box {
+  top: 5rem;
+}
+.drop-box p {
+  font-size: 1.1rem;
+  padding: 0.5rem 2rem;
+}
 
 @media only screen and (max-width: 600px) {
   .nav-center {

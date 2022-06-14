@@ -1,4 +1,4 @@
-import { Card, PagePlaceHolder, Sidebar } from "../../components";
+import { Card, Sidebar } from "../../components";
 import { useVideoGlobal } from "../../context/globalContext";
 
 export const LikedVideo = () => {

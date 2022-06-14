@@ -1,4 +1,4 @@
-import { Sidebar, PagePlaceHolder } from "../../components";
+import { Sidebar } from "../../components";
 import { NewPlaylist } from "./components/newPlatlist";
 import { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
@@ -29,7 +29,7 @@ export const Playlist = () => {
     } else {
       setPlaylist([]);
     }
-  }, []);
+  }, [isAuth]);
 
   return (
     <div>
