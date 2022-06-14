@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import { Sidebar, ActionButton } from "../../components";
 import "./singleVideoPage.css";
-import { useAuth, useExplore } from "../../context";
+import { useAuth, useExplore, useVideoGlobal } from "../../context";
 import { useEffect } from "react";
 import { addTohistory } from "../../service";
+import { findItem } from "../../utils/findItem";
 
 export const SingleVideoPage = () => {
   const { id } = useParams();
@@ -17,10 +18,23 @@ export const SingleVideoPage = () => {
   const {
     auth: { token },
   } = useAuth();
+
+  const { state, dispatch } = useVideoGlobal();
   const header = { authorization: token };
 
+  const historyHandler = async () => {
+    const inHistory = findItem(state.history, video._id);
+
+    if (!inHistory) {
+      const {
+        data: { history },
+      } = await addTohistory(video, header);
+      dispatch({ type: "HISTORY", payload: history });
+    }
+  };
+
   useEffect(() => {
-    addTohistory(video, header);
+    historyHandler();
   }, [video]);
 
   return (

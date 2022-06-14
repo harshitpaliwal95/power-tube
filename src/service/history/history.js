@@ -1,9 +1,9 @@
 import axios from "axios";
-export const addTohistory = async (video, header) => {
+export const addTohistory = (video, header) => {
   try {
-    return await axios.post(
+    return axios.post(
       "/api/user/history",
-      { video },
+      { video: video },
       { headers: header }
     );
   } catch (error) {
