@@ -40,10 +40,11 @@ const Navbar = () => {
 
           <div className="nav-center">
             <div className="search-navbar">
-              <input type="text" placeholder="Search" />
+              {/* Feat on hold */}
+              {/* <input type="text" placeholder="Search" />
               <button className="btn-icon">
                 <i className="bi bi-search"></i>
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="right-nav">
