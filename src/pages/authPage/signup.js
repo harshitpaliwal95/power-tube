@@ -82,13 +82,6 @@ export function SignUp() {
                   ></i>
                 </button>
               </div>
-              <div className="space-between forget-pass">
-                <span>
-                  <label className="text-medium">
-                    <input type="checkbox" /> I accept all term & condition
-                  </label>
-                </span>
-              </div>
               <div className="form-btn">
                 <button
                   className="btn btn-outline"
