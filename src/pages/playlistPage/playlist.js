@@ -1,4 +1,4 @@
-import { Sidebar, PagePlaceHolder } from "../../components";
+import { Sidebar } from "../../components";
 import { NewPlaylist } from "./components/newPlatlist";
 import { useEffect } from "react";
 import { useAuth } from "../../context/authContext";
@@ -29,14 +29,19 @@ export const Playlist = () => {
     } else {
       setPlaylist([]);
     }
-  }, []);
+  }, [isAuth]);
 
   return (
     <div>
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          {playlist.length <= 0 && <PagePlaceHolder />}
+          {playlist.length <= 0 && (
+            <>
+              <p className="main-heading">No Playlist</p>
+              <i className="bi bi-x-lg empty-icon"></i>
+            </>
+          )}
           <div className="grid-three">
             {playlist.map((playlist) => (
               <NewPlaylist key={playlist._id} playlist={playlist} />

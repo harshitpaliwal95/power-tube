@@ -1,10 +1,12 @@
 import { useAuth, usePlaylist, useVideoGlobal } from "../../context";
 import { findItem } from "../../utils/findItem";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { ClickHandler } from "../../utils/clickHandler";
 import { Modal } from "../modal/modal";
 import { useState } from "react";
+import { HistoryApi } from "../../service/history/history";
+import { toast } from "react-toastify";
 
 export const ActionButton = ({ playlistId, videoId, video }) => {
   const {
@@ -32,9 +34,14 @@ export const ActionButton = ({ playlistId, videoId, video }) => {
       const response = await axios.delete(deleteLink, { headers: header });
       setPlaylist(response.data.playlists);
     } catch (error) {
-      console.log(error);
+      toast.info("Something went wrong");
     }
   };
+
+  const { deleteVideoFromHistory } = HistoryApi();
+
+  let { pathname } = useLocation();
+
   return (
     <>
       {modal && <Modal setModal={setModal} video={video} />}
@@ -52,13 +59,23 @@ export const ActionButton = ({ playlistId, videoId, video }) => {
           } btn-icon`}
         ></i>
       </button>
-      {id && playlistId ? (
-        <button onClick={() => deleteFromPlaylist(playlistId, videoId)}>
+
+      {pathname !== "/history" && (
+        <>
+          {id && playlistId ? (
+            <button onClick={() => deleteFromPlaylist(playlistId, videoId)}>
+              <i className={`bi bi-trash btn-icon`}></i>
+            </button>
+          ) : (
+            <button onClick={() => setModal(true)}>
+              <i className={`bi bi-plus-circle-fill btn-icon`}></i>
+            </button>
+          )}
+        </>
+      )}
+      {pathname === "/history" && (
+        <button onClick={() => deleteVideoFromHistory(videoId)}>
           <i className={`bi bi-trash btn-icon`}></i>
-        </button>
-      ) : (
-        <button onClick={() => setModal(true)}>
-          <i className={`bi bi-plus-circle-fill btn-icon`}></i>
         </button>
       )}
     </>

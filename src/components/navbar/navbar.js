@@ -1,8 +1,9 @@
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 import { useAuth } from "../../context/authContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const {
@@ -18,34 +19,16 @@ const Navbar = () => {
       isAuth: false,
     }));
   };
+
+  const [dropDown, setDropDown] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => setDropDown(false), [pathname, isAuth]);
   return (
     <div>
       <header>
         <ToastContainer />
-        <div className="user-ac">
-          <div className="rightside">
-            <button className="user-ac-btn sign-btn">
-              <Link to="/login">
-                <p>Log In</p>
-              </Link>
-            </button>
-            <span>|</span>
-            <button className="user-ac-btn join-btn">
-              <Link to="/signup">
-                <p>Sign Up</p>
-              </Link>
-            </button>
-            <span>|</span>
-            {isAuth && (
-              <button
-                className="user-ac-btn help-btn"
-                onClick={() => logOutHandler()}
-              >
-                <p>Log Out</p>
-              </button>
-            )}
-          </div>
-        </div>
+        <div className="user-ac"></div>
         <nav className="navbar">
           <div className="left-nav">
             <div className="logo">
@@ -57,14 +40,33 @@ const Navbar = () => {
 
           <div className="nav-center">
             <div className="search-navbar">
-              <input type="text" placeholder="Search" />
+              {/* Feat on hold */}
+              {/* <input type="text" placeholder="Search" />
               <button className="btn-icon">
                 <i className="bi bi-search"></i>
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="right-nav">
             <div>
+              <button
+                className="bi bi-person-fill btn-icon"
+                onClick={() => setDropDown((pre) => (pre ? false : true))}
+              ></button>
+              <div className={`drop-box ${dropDown ? "show-box" : ""}`}>
+                {isAuth ? (
+                  <p onClick={() => logOutHandler()}>Logout</p>
+                ) : (
+                  <>
+                    <Link to="/login">
+                      <p>Login</p>
+                    </Link>
+                    <Link to="/signup">
+                      <p>SignUp</p>
+                    </Link>
+                  </>
+                )}
+              </div>
               <button className="btn-icon burger">
                 <i className="bi bi-list"></i>
               </button>

@@ -7,9 +7,8 @@ export const LikeVideoApi = () => {
     auth: { token },
   } = useAuth();
 
-  const { state, dispatch } = useVideoGlobal();
+  const { dispatch } = useVideoGlobal();
   const header = { authorization: token };
-
 
   const likeVideoPost = async (video) => {
     try {

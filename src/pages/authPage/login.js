@@ -37,7 +37,6 @@ export function Login() {
         toast.error("Wrong email or password try again!");
       }
     } catch (error) {
-      console.log(error.message);
       toast.error("Unable To Login Try Again Later");
     }
   };
@@ -83,16 +82,7 @@ export function Login() {
                   ></i>
                 </button>
               </div>
-              <div className="space-between forget-pass">
-                <span>
-                  <label className="text-medium">
-                    <input type="checkbox" /> Remember Me
-                  </label>
-                </span>
-                <span>
-                  <span className="text-medium">Forgot your password?</span>
-                </span>
-              </div>
+
               <div className="form-btn">
                 <button
                   className="btn btn-outline"

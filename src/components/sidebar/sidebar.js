@@ -30,6 +30,11 @@ export const Sidebar = () => {
           <i className="bi bi-bookmarks"></i> Watch Later
         </div>
       </Link>
+      <Link to="/history">
+        <div className="sidebar-title text-lg sidebar-btn">
+          <i className="bi bi-clock-history"></i> History
+        </div>
+      </Link>
     </aside>
   );
 };

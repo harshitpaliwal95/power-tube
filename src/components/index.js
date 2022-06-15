@@ -3,7 +3,6 @@ export { Sidebar } from "./sidebar/sidebar";
 export { Card } from "./card/card";
 export { Chips } from "./filterChips/chips";
 export { chipsData } from "./filterChips/chipsData";
-export { PagePlaceHolder } from "./emptyMessage/pagePlaceHolder";
 export { Modal } from "./modal/modal";
 export { Loader } from "./loader/loader";
 export { ActionButton } from "./actionButton.js/actionButton";
