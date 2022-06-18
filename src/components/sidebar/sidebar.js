@@ -1,44 +1,76 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useVideoGlobal } from "../../context";
 import "./sidebar.css";
 
 export const Sidebar = () => {
   const {
     state: { sideBar },
+    dispatch,
   } = useVideoGlobal();
+  const navigate = useNavigate();
   return (
     <aside className={`side-bar ${sideBar ? "" : "display-none"}`}>
-      <Link to="/">
+      <div
+        onClick={() => {
+          navigate("/");
+          dispatch({ type: "SIDE_BAR", payload: false });
+        }}
+      >
         <div className="sidebar-title text-lg sidebar-btn">
           <i className="bi bi-house"></i> Home
         </div>
-      </Link>
-      <Link to="/explore">
+      </div>
+      <div
+        onClick={() => {
+          navigate("/explore");
+          dispatch({ type: "SIDE_BAR", payload: false });
+        }}
+      >
         <div className="sidebar-title text-lg sidebar-btn">
           <i className="bi bi-compass"></i> Explore
         </div>
-      </Link>
+      </div>
 
-      <Link to="/playlist">
+      <div
+        onClick={() => {
+          navigate("/playlist");
+          dispatch({ type: "SIDE_BAR", payload: false });
+        }}
+      >
         <div className="sidebar-title text-lg sidebar-btn">
           <i className="bi bi-collection-play"></i> Playlist
         </div>
-      </Link>
-      <Link to="/liked">
+      </div>
+      <div
+        onClick={() => {
+          navigate("/liked");
+          dispatch({ type: "SIDE_BAR", payload: false });
+        }}
+      >
         <div className="sidebar-title text-lg sidebar-btn">
           <i className="bi bi-hand-thumbs-up"></i> Liked Video
         </div>
-      </Link>
-      <Link to="/watchlater">
+      </div>
+      <div
+        onClick={() => {
+          navigate("/watchlater");
+          dispatch({ type: "SIDE_BAR", payload: false });
+        }}
+      >
         <div className="sidebar-title text-lg sidebar-btn">
           <i className="bi bi-bookmarks"></i> Watch Later
         </div>
-      </Link>
-      <Link to="/history">
+      </div>
+      <div
+        onClick={() => {
+          navigate("/history");
+          dispatch({ type: "SIDE_BAR", payload: false });
+        }}
+      >
         <div className="sidebar-title text-lg sidebar-btn">
           <i className="bi bi-clock-history"></i> History
         </div>
-      </Link>
+      </div>
     </aside>
   );
 };
