@@ -2,6 +2,9 @@
   margin: 2rem 0;
   cursor: pointer;
 }
+.display-none {
+  display: none;
+}
 @media only screen and (max-width: 600px) {
   .side-bar {
     position: absolute;
@@ -11,6 +14,6 @@
     padding: 2rem;
     height: 100vh;
     transition: 0.8s;
-    display: none;
+    top: 5rem;
   }
 }

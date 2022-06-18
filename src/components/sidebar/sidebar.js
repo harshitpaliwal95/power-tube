@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { useVideoGlobal } from "../../context";
 import "./sidebar.css";
 
 export const Sidebar = () => {
+  const {
+    state: { sideBar },
+  } = useVideoGlobal();
   return (
-    <aside className="side-bar">
+    <aside className={`side-bar ${sideBar ? "" : "display-none"}`}>
       <Link to="/">
         <div className="sidebar-title text-lg sidebar-btn">
           <i className="bi bi-house"></i> Home

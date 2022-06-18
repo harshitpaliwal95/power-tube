@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import { Sidebar, Card, Loader } from "../../components";
 import axios from "axios";
 import "./home.css";
