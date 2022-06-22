@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Navbar,
   Sidebar,
@@ -13,22 +13,26 @@ import { setCategory } from "../../utils/setCategory";
 
 export const Explore = () => {
   const {
-    exploreState: { explore, category },
+    exploreState: { category },
     exploreDispatch,
   } = useExplore();
+  const [video, setVideo] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await axios.get("/api/videos");
         exploreDispatch({ type: "ALL_VIDEO", payload: response.data.videos });
+        setTimeout(() => {
+          setVideo(() => response.data.videos);
+        }, 1200);
       } catch (e) {
         console.log(e.message);
       }
     })();
   }, []);
 
-  const defaultState = [...explore];
+  const defaultState = [...video];
   const categoryVideos = setCategory(defaultState, category);
 
   return (
@@ -38,7 +42,7 @@ export const Explore = () => {
         <Sidebar />
         <main className="main-product">
           <div className="chip-container">
-            {explore.length === 0 ? (
+            {video.length === 0 ? (
               <Loader />
             ) : (
               chipsData.map((item) => <Chips key={item.chipName} data={item} />)
