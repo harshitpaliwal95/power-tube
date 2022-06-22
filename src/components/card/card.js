@@ -11,8 +11,16 @@ export const Card = ({ video }) => {
   return (
     <div className="card-component">
       <div className="card-comp-img">
+        <iframe
+          className="iframe"
+          src={`https://www.youtube.com/embed/${_id}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          // allowFullScreen
+        ></iframe>
         <img
-          className="card-top-img"
+          className="card-top-img display-none"
           onClick={() => navigate(`/video/${_id}`)}
           src={`https://i.ytimg.com/vi/${_id}/hqdefault.jpg`}
           alt="loading"

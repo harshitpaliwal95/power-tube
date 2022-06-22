@@ -24,25 +24,27 @@ export const deleteAllHistory = (header) => {
 export const HistoryApi = () => {
   const { state, dispatch } = useVideoGlobal();
   const {
-    auth: { token },
+    auth: { token, isAuth },
   } = useAuth();
 
   const header = { authorization: token };
 
   const addToHistory = async (video) => {
-    const inHistory = findItem(state.history, video._id);
-    if (!inHistory) {
-      try {
-        const {
-          data: { history },
-        } = await axios.post(
-          "/api/user/history",
-          { video: video },
-          { headers: header }
-        );
-        dispatch({ type: "HISTORY", payload: history });
-      } catch (error) {
-        toast.info("Something went wrong");
+    if (isAuth) {
+      const inHistory = findItem(state.history, video._id);
+      if (!inHistory) {
+        try {
+          const {
+            data: { history },
+          } = await axios.post(
+            "/api/user/history",
+            { video: video },
+            { headers: header }
+          );
+          dispatch({ type: "HISTORY", payload: history });
+        } catch (error) {
+          toast.info("Something went wrong");
+        }
       }
     }
   };

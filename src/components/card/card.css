@@ -4,9 +4,19 @@
 .card-component {
   cursor: pointer;
   justify-content: space-between;
+  transition: ease-in-out 0.4s;
 }
 .card-icon {
   font-size: 1.2rem;
+}
+.card-component:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(255, 255, 255, 0.16) 0px 10px 36px 0px,
+    rgba(255, 255, 255, 0.06) 0px 0px 0px 1px;
+}
+.iframe {
+  height: 100%;
+  width: 100%;
 }
 .btn-icon:hover {
   background-color: #ffffff40;
@@ -16,4 +26,9 @@
   width: 30rem;
   height: 20rem;
   object-fit: cover;
+}
+@media only screen and (max-width: 600px) {
+  .card-component {
+    width: 100%;
+  }
 }

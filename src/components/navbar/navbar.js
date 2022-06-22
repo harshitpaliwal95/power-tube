@@ -2,7 +2,7 @@ import logo from "../../assets/logo.png";
 import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 import { useAuth } from "../../context/authContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useVideoGlobal } from "../../context";
 
@@ -31,7 +31,6 @@ const Navbar = () => {
   return (
     <div>
       <header>
-        <ToastContainer />
         <div className="user-ac"></div>
         <nav className="navbar">
           <div className="left-nav">
