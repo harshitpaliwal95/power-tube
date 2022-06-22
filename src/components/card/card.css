@@ -21,6 +21,9 @@
 .btn-icon:hover {
   background-color: #ffffff40;
 }
+.card-comp-img {
+  min-height: 16rem;
+}
 .empty-img {
   margin: 1rem;
   width: 30rem;
