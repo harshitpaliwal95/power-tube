@@ -13,10 +13,10 @@ import { setCategory } from "../../utils/setCategory";
 
 export const Explore = () => {
   const {
-    exploreState: { category },
+    exploreState: { category, explore },
     exploreDispatch,
   } = useExplore();
-  const [video, setVideo] = useState([]);
+  const [video, setVideo] = useState(explore);
 
   useEffect(() => {
     (async () => {
@@ -25,12 +25,12 @@ export const Explore = () => {
         exploreDispatch({ type: "ALL_VIDEO", payload: response.data.videos });
         setTimeout(() => {
           setVideo(() => response.data.videos);
-        }, 1200);
+        }, 300);
       } catch (e) {
         console.log(e.message);
       }
     })();
-  }, []);
+  }, [video]);
 
   const defaultState = [...video];
   const categoryVideos = setCategory(defaultState, category);
@@ -42,12 +42,7 @@ export const Explore = () => {
         <Sidebar />
         <main className="main-product">
           <div className="chip-container">
-            {video.length === 0 ? (
-              <Loader />
-            ) : (
-              // chipsData.map((item) => <Chips key={item.chipName} data={item} />)
-              <Chips />
-            )}
+            {video.length === 0 ? <Loader /> : <Chips />}
           </div>
 
           <div className="grid-three">
