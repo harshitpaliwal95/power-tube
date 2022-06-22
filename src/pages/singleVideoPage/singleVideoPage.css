@@ -1,6 +1,8 @@
 .single-video-iframe {
   width: 50rem;
   height: 30rem;
+  box-shadow: rgba(255, 255, 255, 0.16) 0px 10px 36px 0px,
+    rgba(255, 255, 255, 0.06) 0px 0px 0px 1px;
 }
 .single-video-btn {
   margin-top: 1rem;

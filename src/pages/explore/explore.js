@@ -45,7 +45,8 @@ export const Explore = () => {
             {video.length === 0 ? (
               <Loader />
             ) : (
-              chipsData.map((item) => <Chips key={item.chipName} data={item} />)
+              // chipsData.map((item) => <Chips key={item.chipName} data={item} />)
+              <Chips />
             )}
           </div>
 

@@ -1,6 +1,15 @@
 .sidebar-btn {
-  margin: 2rem 0;
+  margin: 0.8rem 0;
   cursor: pointer;
+  padding: 0.5rem 10px;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+.sidebar-btn:hover {
+  background-color: rgba(128, 128, 128, 0.382);
+}
+.bg-active {
+  background-color: rgba(128, 128, 128, 0.382);
 }
 .display-none {
   display: none;
