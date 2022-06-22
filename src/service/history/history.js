@@ -42,9 +42,7 @@ export const HistoryApi = () => {
             { headers: header }
           );
           dispatch({ type: "HISTORY", payload: history });
-        } catch (error) {
-          toast.info("Something went wrong");
-        }
+        } catch (error) {}
       }
     }
   };
