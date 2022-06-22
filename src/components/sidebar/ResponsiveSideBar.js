@@ -1,13 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useVideoGlobal } from "../../context";
 import "./sidebar.css";
 
-export const Sidebar = () => {
+export const ResponsiveSidebar = () => {
+  const {
+    state: { sideBar },
+    dispatch,
+  } = useVideoGlobal();
   const navigate = useNavigate();
   return (
-    <aside className={`side-bar`}>
+    <aside className={`responsive-side-bar ${sideBar ? "" : "display-none"}`}>
       <div
         onClick={() => {
           navigate("/");
+          dispatch({ type: "SIDE_BAR", payload: false });
         }}
       >
         <div className="sidebar-title text-lg sidebar-btn">
@@ -17,6 +23,7 @@ export const Sidebar = () => {
       <div
         onClick={() => {
           navigate("/explore");
+          dispatch({ type: "SIDE_BAR", payload: false });
         }}
       >
         <div className="sidebar-title text-lg sidebar-btn">
@@ -27,6 +34,7 @@ export const Sidebar = () => {
       <div
         onClick={() => {
           navigate("/playlist");
+          dispatch({ type: "SIDE_BAR", payload: false });
         }}
       >
         <div className="sidebar-title text-lg sidebar-btn">
@@ -36,6 +44,7 @@ export const Sidebar = () => {
       <div
         onClick={() => {
           navigate("/liked");
+          dispatch({ type: "SIDE_BAR", payload: false });
         }}
       >
         <div className="sidebar-title text-lg sidebar-btn">
@@ -45,6 +54,7 @@ export const Sidebar = () => {
       <div
         onClick={() => {
           navigate("/watchlater");
+          dispatch({ type: "SIDE_BAR", payload: false });
         }}
       >
         <div className="sidebar-title text-lg sidebar-btn">
@@ -54,6 +64,7 @@ export const Sidebar = () => {
       <div
         onClick={() => {
           navigate("/history");
+          dispatch({ type: "SIDE_BAR", payload: false });
         }}
       >
         <div className="sidebar-title text-lg sidebar-btn">

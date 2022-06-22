@@ -6,3 +6,4 @@ export { chipsData } from "./filterChips/chipsData";
 export { Modal } from "./modal/modal";
 export { Loader } from "./loader/loader";
 export { ActionButton } from "./actionButton.js/actionButton";
+export { ResponsiveSidebar } from "./sidebar/ResponsiveSideBar";

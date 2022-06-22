@@ -5,15 +5,19 @@
 .display-none {
   display: none;
 }
+.responsive-side-bar {
+  position: fixed;
+  background-color: black;
+  z-index: 1200;
+  width: 100%;
+  padding: 2rem;
+  height: 100vh;
+  transition: 0.4s;
+  left: 0;
+  top: 5rem;
+}
 @media only screen and (max-width: 600px) {
   .side-bar {
-    position: fixed;
-    background-color: black;
-    z-index: 1200;
-    width: 100%;
-    padding: 2rem;
-    height: 100vh;
-    transition: 0.8s;
-    top: 5rem;
+    display: none;
   }
 }

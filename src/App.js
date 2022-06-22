@@ -14,13 +14,14 @@ import {
   WatchLater,
 } from "./pages";
 import { SelectVideoPlaylist } from "./pages/playlistPage/selectVideoPlaylist";
-import { Navbar } from "./components";
+import { Navbar, ResponsiveSidebar } from "./components";
 import { ProtectedRoute } from "./customHook/protectedRoute";
 function App() {
   return (
     <div className="App">
       <ToastContainer />
       <Navbar />
+      <ResponsiveSidebar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mockman" element={<Mockman />} />
