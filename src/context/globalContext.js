@@ -7,6 +7,7 @@ const GlobalProvider = ({ children }) => {
     likeVideo: [],
     watchLater: [],
     history: [],
+    sideBar: false,
   });
 
   return (

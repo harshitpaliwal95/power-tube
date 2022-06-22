@@ -14,26 +14,30 @@ import {
   WatchLater,
 } from "./pages";
 import { SelectVideoPlaylist } from "./pages/playlistPage/selectVideoPlaylist";
-import { Navbar } from "./components";
+import { Navbar, ResponsiveSidebar } from "./components";
 import { ProtectedRoute } from "./customHook/protectedRoute";
 function App() {
   return (
     <div className="App">
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Navbar />
+      <ResponsiveSidebar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route
-          path="/explore"
-          element={
-            <ProtectedRoute>
-              <Explore />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/explore" element={<Explore />} />
         <Route
           path="/playlist"
           element={
@@ -74,14 +78,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/video/:id"
-          element={
-            <ProtectedRoute>
-              <SingleVideoPage />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/video/:id" element={<SingleVideoPage />} />
       </Routes>
     </div>
   );

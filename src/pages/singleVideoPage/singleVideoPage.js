@@ -26,6 +26,7 @@ export const SingleVideoPage = () => {
       <Sidebar />
       <div className="main-product single-video">
         <iframe
+          className="single-video-iframe"
           src={`https://www.youtube.com/embed/${id}`}
           title="YouTube video player"
           frameBorder="0"

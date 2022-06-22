@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import { useState } from "react";
 import { toast } from "react-toastify";
 import "./auth.css";
@@ -16,7 +15,7 @@ export function Login() {
 
   const navigate = useNavigate();
 
-  const logInHandler = async () => {
+  const logInHandler = async (email, password) => {
     const body = {
       email: email,
       password: password,
@@ -39,6 +38,11 @@ export function Login() {
     } catch (error) {
       toast.error("Unable To Login Try Again Later");
     }
+  };
+  const guestHandler = () => {
+    setEmail("user@gmail.com");
+    setPassword("123456");
+    logInHandler("user@gmail.com", "123456");
   };
 
   return (
@@ -86,16 +90,13 @@ export function Login() {
               <div className="form-btn">
                 <button
                   className="btn btn-outline"
-                  onClick={() => logInHandler()}
+                  onClick={() => logInHandler(email, password)}
                 >
                   Log In
                 </button>
                 <button
                   className="btn btn-outline guest-btn"
-                  onClick={() => {
-                    setEmail("user@gmail.com");
-                    setPassword("123456");
-                  }}
+                  onClick={() => guestHandler()}
                 >
                   Log In As Guest
                 </button>

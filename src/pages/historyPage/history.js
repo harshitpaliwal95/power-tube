@@ -14,7 +14,7 @@ export const History = () => {
       <section className="main-box">
         <Sidebar />
         <main className="main-product">
-          {!history && (
+          {history.length !== 0 && (
             <button className="btn" onClick={clearAllHistory}>
               Clear All History
             </button>
