@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  Navbar,
-  Sidebar,
-  Card,
-  Chips,
-  chipsData,
-  Loader,
-} from "../../components";
+import { Navbar, Sidebar, Card, Chips, Loader } from "../../components";
 import axios from "axios";
 import { useExplore } from "../../context/exploreContext";
 import { setCategory } from "../../utils/setCategory";
+import { ScrollToTop } from "../../hook/scrollToTop";
 
 export const Explore = () => {
   const {
@@ -30,6 +24,7 @@ export const Explore = () => {
         console.log(e.message);
       }
     })();
+    ScrollToTop();
   }, [video]);
 
   const defaultState = [...video];

@@ -1,5 +1,5 @@
 import logo from "../../assets/logo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
@@ -24,6 +24,7 @@ const Navbar = () => {
 
   const [dropDown, setDropDown] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setDropDown(false);
@@ -43,6 +44,11 @@ const Navbar = () => {
 
           <div className="nav-center">
             <div className="search-navbar">
+              {pathname === "/" && (
+                <button className="btn" onClick={() => navigate("/explore")}>
+                  EXPLORE
+                </button>
+              )}
               {/* Feat on hold */}
               {/* <input type="text" placeholder="Search" />
               <button className="btn-icon">

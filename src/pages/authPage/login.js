@@ -30,7 +30,7 @@ export function Login() {
           isAuth: true,
         }));
         setTimeout(() => {
-          navigate("/");
+          navigate("/explore");
         }, 2500);
       } else {
         toast.error("Wrong email or password try again!");

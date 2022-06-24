@@ -15,7 +15,7 @@ import {
 } from "./pages";
 import { SelectVideoPlaylist } from "./pages/playlistPage/selectVideoPlaylist";
 import { Navbar, ResponsiveSidebar } from "./components";
-import { ProtectedRoute } from "./customHook/protectedRoute";
+import { ProtectedRoute } from "./hook/protectedRoute";
 function App() {
   return (
     <div className="App">
