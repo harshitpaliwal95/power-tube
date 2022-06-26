@@ -17,9 +17,8 @@ export const Explore = () => {
       try {
         const response = await axios.get("/api/videos");
         exploreDispatch({ type: "ALL_VIDEO", payload: response.data.videos });
-        setTimeout(() => {
-          setVideo(() => response.data.videos);
-        }, 300);
+
+        setVideo(() => response.data.videos);
       } catch (e) {
         console.log(e.message);
       }

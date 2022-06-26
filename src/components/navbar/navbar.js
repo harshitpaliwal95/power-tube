@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useExplore, useVideoGlobal } from "../../context";
 import { searchItem } from "../../utils/search";
-import { debounce } from "../../utils/debounce";
 
 const Navbar = () => {
   const {
@@ -31,16 +30,34 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [searchItemValue, setSearchItemValue] = useState([]);
+  const [searchQuary, setSearchQuary] = useState("");
   useEffect(() => {
     setDropDown(false);
   }, [pathname, isAuth]);
 
-  const searchHandler = (e) => {
-    let input = e.target.value;
-    let arr = explore;
-    const filterItem = searchItem(arr, input);
-    setSearchItemValue(filterItem);
+  const debounce = function (fun, delay) {
+    let timer;
+    return function () {
+      let context = this;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        fun.apply(context, arguments);
+      }, delay);
+    };
   };
+  let timer;
+  const searchHandler = (e) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setSearchQuary(e.target.value);
+    }, 800);
+  };
+  useEffect(() => {
+    console.log(searchQuary);
+    const filterItem = searchItem(explore, searchQuary);
+    setSearchItemValue(filterItem);
+  }, [searchQuary]);
+
   useEffect(() => {
     setSearchItemValue([]);
   }, [pathname]);

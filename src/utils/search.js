@@ -1,4 +1,4 @@
-export const searchItem = (arr, input) => {
+export const searchItem = function (arr, input) {
   if (input !== null && input !== "") {
     const result = arr.filter((item) =>
       item.title.toLowerCase().includes(input.toLowerCase())
