@@ -60,7 +60,7 @@ export const Home = () => {
               <span className="red-highlight">WER TU</span>BE
             </span>
             <button
-              class="btn btn-outline hero-btn"
+              className="btn btn-outline hero-btn"
               onClick={() => navigate("/explore")}
             >
               EXPLORE MORE

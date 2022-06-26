@@ -24,12 +24,13 @@ export const Explore = () => {
         console.log(e.message);
       }
     })();
-    ScrollToTop();
-  }, [video]);
+  }, [explore]);
 
   const defaultState = [...video];
   const categoryVideos = setCategory(defaultState, category);
-
+  useEffect(() => {
+    ScrollToTop();
+  }, []);
   return (
     <div>
       <Navbar />
