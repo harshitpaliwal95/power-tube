@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  Navbar,
-  Sidebar,
-  Card,
-  Chips,
-  chipsData,
-  Loader,
-} from "../../components";
+import { Navbar, Sidebar, Card, Chips, Loader } from "../../components";
 import axios from "axios";
 import { useExplore } from "../../context/exploreContext";
 import { setCategory } from "../../utils/setCategory";
+import { ScrollToTop } from "../../hook/scrollToTop";
 
 export const Explore = () => {
   const {
@@ -23,18 +17,19 @@ export const Explore = () => {
       try {
         const response = await axios.get("/api/videos");
         exploreDispatch({ type: "ALL_VIDEO", payload: response.data.videos });
-        setTimeout(() => {
-          setVideo(() => response.data.videos);
-        }, 300);
+
+        setVideo(() => response.data.videos);
       } catch (e) {
         console.log(e.message);
       }
     })();
-  }, [video]);
+  }, [explore]);
 
   const defaultState = [...video];
   const categoryVideos = setCategory(defaultState, category);
-
+  useEffect(() => {
+    ScrollToTop();
+  }, []);
   return (
     <div>
       <Navbar />

@@ -1,10 +1,11 @@
 import logo from "../../assets/logo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
-import { useVideoGlobal } from "../../context";
+import { useExplore, useVideoGlobal } from "../../context";
+import { searchItem } from "../../utils/search";
 
 const Navbar = () => {
   const {
@@ -12,6 +13,9 @@ const Navbar = () => {
     setAuth,
   } = useAuth();
   const { dispatch } = useVideoGlobal();
+  const {
+    exploreState: { explore },
+  } = useExplore();
 
   const logOutHandler = () => {
     toast.success("Logout Succesfully");
@@ -24,10 +28,30 @@ const Navbar = () => {
 
   const [dropDown, setDropDown] = useState(false);
   const { pathname } = useLocation();
-
+  const navigate = useNavigate();
+  const [searchItemValue, setSearchItemValue] = useState([]);
+  const [searchQuary, setSearchQuary] = useState("");
   useEffect(() => {
     setDropDown(false);
   }, [pathname, isAuth]);
+
+  let timer;
+  const searchHandler = (e) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setSearchQuary(e.target.value);
+    }, 800);
+  };
+  useEffect(() => {
+    console.log(searchQuary);
+    const filterItem = searchItem(explore, searchQuary);
+    setSearchItemValue(filterItem);
+  }, [searchQuary]);
+
+  useEffect(() => {
+    setSearchItemValue([]);
+  }, [pathname]);
+
   return (
     <div>
       <header>
@@ -43,11 +67,37 @@ const Navbar = () => {
 
           <div className="nav-center">
             <div className="search-navbar">
-              {/* Feat on hold */}
-              {/* <input type="text" placeholder="Search" />
-              <button className="btn-icon">
-                <i className="bi bi-search"></i>
-              </button> */}
+              {pathname === "/" ? (
+                <button className="btn" onClick={() => navigate("/explore")}>
+                  EXPLORE
+                </button>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    onChange={searchHandler}
+                  />
+                  <button className="btn-icon">
+                    <i className="bi bi-search"></i>
+                  </button>
+
+                  <div className="suggestion">
+                    <div className="suggestion-box flex-column ">
+                      {searchItemValue.map((item) => (
+                        <span
+                          className="opt-suggestion"
+                          onClick={() => navigate(`/video/${item._id}`)}
+                          key={item._id}
+                        >
+                          <i className="bi bi-search search-icon-sug"></i>
+                          {item.title}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
           <div className="right-nav">
